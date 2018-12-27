@@ -1,0 +1,1 @@
+Base.getScript("/statics/templates/mowov9mb1/js/BottomFun2.js");

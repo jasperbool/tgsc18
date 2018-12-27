@@ -1,0 +1,285 @@
+                          <div class="line-time">
+							<!-- 限时揭晓 -->
+            {wc:if $item['xsjx_time']!='0'}
+            <div id="divAutoRTime" class="Immediate">
+			            <span><a class="orange" target="_blank" href="#">限时揭晓的规则？</a></span>
+                        <i id="timeall" endtime="{wc:fun:date("m-d-Y H:i:s",$item['xsjx_time'])}" lxfday="no"></i>		                           
+			</div>
+            <script type="text/javascript">			
+			function lxfEndtime(xsjx_time_shop,this_time){	
+				if(!this.xsjx_time_shop){
+					this.xsjx_time_shop = xsjx_time_shop;	
+					this.this_time		= this_time
+				}
+				this.this_time = this.this_time + 1000;
+				lxfEndtime_setTimeout  = window.setTimeout("lxfEndtime()",1000);				
+				var endtime = {wc:$item['xsjx_time']}000;
+			    var youtime = endtime - this.this_time;	   	   //还有多久(毫秒值)
+				
+				var seconds = youtime/1000;
+				var minutes = Math.floor(seconds/60);
+				var hours = Math.floor(minutes/60);
+				var days = Math.floor(hours/24);
+				var CDay= days;
+				var CHour= hours % 24;
+				var CMinute= minutes % 60;
+				var CSecond= Math.floor(seconds%60);//"%"是取余运算，可以理解为60进一后取余数，然后只要余数							
+				this.xsjx_time_shop.html("<b>限时揭晓</b><p>剩余时间：<em>"+days+"</em>天<em>"+CHour+"</em>时<em>"+CMinute+"</em>分<em>"+CSecond+"</em>秒</p>");
+				delete youtime,seconds,minutes,hours,days,CDay,CHour, CMinute, CSecond;
+				if(endtime <= this.this_time){			
+					lxfEndtime_setTimeout && clearTimeout(lxfEndtime_setTimeout);					
+					this.xsjx_time_shop.html("<b>限时揭晓</b><p>正在计算中....</p>");//如果结束日期小于当前日期就提示过期啦	
+					xsjx_time_shop = this.xsjx_time_shop;
+					$.ajaxSetup({
+						async : false
+					});
+					$.post("{WEB_PATH}/go/autolottery/autolottery_ret_install",{"shopid":{wc:$item['id']}},function(data){		
+						alert(data)
+						if(data == '-1'){
+							xsjx_time_shop.html("<b>限时揭晓</b><p>没有这个商品!</p>");
+							return;
+						}
+						if(data == '-2'){
+							xsjx_time_shop.html("<b>限时揭晓</b><p>商品揭晓失败!</p>");
+							return;
+						}
+						if(data == '-3'){							
+							xsjx_time_shop.html("<b>限时揭晓</b><p>商品参与人数为0，商品不予揭晓!</p>");
+							return;
+						}
+						if(data == '-4'){
+							xsjx_time_shop.html("<b>限时揭晓</b><p>商品还未到揭晓时间!</p>");
+							return;
+						}
+						if(data == '-5'){
+							xsjx_time_shop.html("<b>限时揭晓</b><p>商品揭晓时间已过期!</p>");
+							return;
+						}if(data == '-6'){							
+							 xsjx_time_shop.html("<b>限时揭晓</b>商品正在揭晓中!");								
+							 window.location.href=location.href;
+							 return;
+						}else{							
+							xsjx_time_shop.html("<b>限时揭晓</b><p>揭晓幸运码:<i style='color:#fff;background:#D80000; padding:3px 5px;'>"+data+"</i></p>");						
+							return;
+						}						
+						
+					});
+					
+				}							
+			  }			  
+			 $(function(){lxfEndtime($("#timeall"),{wc:fun:time()}000);});
+			</script>
+            {wc:if:end}			
+
+
+
+			<!-- 限时揭晓end -->
+							<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/GoodsDetailFun.js"></script>
+                                <div class="line-wrapper u-progress" title="已完成{wc:fun:percent($item['canyurenshu'],$item['zongrenshu'])}"><span class="pgbar" style="width:{wc:fun:width($item['canyurenshu'],$item['zongrenshu'],510)}0px;display:"><span class="pging"></span></span></div>
+                                <div class="text-wrapper clearfix">
+                                    <div class="now-has">
+                                        <span>
+                                            {wc:$item['canyurenshu']}</span>
+                                        <p>已参与</p>
+                                    </div>
+                                    <div class="total-has">
+                                        <span id="CodeQuantity">
+                                            {wc:$item['zongrenshu']}</span>
+                                        <p>总需人次</p>
+                                    </div>
+                                    <div class="overplus-has">
+                                        <span id="CodeLift">
+                                            {wc:$syrs}</span>
+                                        <p>剩余</p>
+                                    </div>
+                                </div>
+                            </div>							
+				{wc:if $item['shenyurenshu']=='0' && $item['xsjx_time']=='0' && empty($item['q_uid'])}				
+				<style type="text/css">
+.time-item strong{background:#D80000;color:#fff;line-height:16px;font-size:16px;font-family:Arial;padding:0 8px;margin-right:0px;border-radius:50px;box-shadow:1px 1px 3px rgba(0,0,0,0.2);}
+#day_show{float:left;line-height:49px;color:#c71c60;font-size:32px;margin:0 10px;font-family:Arial, Helvetica, sans-serif;}
+.item-title .unit{background:none;line-height:49px;font-size:24px;padding:0 10px;float:left;}
+</style>
+				
+				
+<div style="width:490px; margin:0 auto">
+<p class="time-item">
+距离第{wc:$item['period1_date']}期开奖倒计时
+
+<SCRIPT LANGUAGE="JavaScript">
+var maxtime;
+if(window.name==''){ 
+maxtime = 10*60;
+}else{
+maxtime = window.name;
+}
+  
+function CountDown(){
+if(maxtime>=0){
+hours = Math.floor(maxtime/3600);
+minutes = Math.floor((maxtime-hours*3600)/60);
+seconds = Math.floor(maxtime%60);
+msg = "还有"+minutes+"分"+seconds+"秒";
+document.all["timer"].innerHTML = msg;
+//if(maxtime == 5*60) alert('注意，还有5分钟!');
+--maxtime;
+window.name = maxtime; 
+}
+else{
+clearInterval(timer);
+//alert("即将开奖进入开奖计算环节，请稍后……");
+}
+}
+timer = setInterval("CountDown()",1000);
+</SCRIPT>
+<div id="timer" style="color:#d80000;font-size:36px;"></div> 
+  
+
+</p>
+
+</div>
+<div style="text-align:center;margin:10px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+				
+				
+
+<!--
+        <div class="ygRecord" name="div_tab">
+                <div class="RecordOnehundred"><h4>截止该商品揭晓购买时间【{wc:fun:microt($item['q_end_time'])}】最后50条全站购买时间记录</h4>
+                <div class="FloatBox"></div>
+                    {wc:php:start}
+                    $addList = $this->db->GetList("select * from `@#_member_go_record` where time < '{$item['overtime']}' order by id desc limit 50");
+                    {wc:php:end}
+                   {wc:loop $addList $record}
+                   {wc:php:start}
+                        $itemid = $item['id'];
+                        $record_time = explode(".",$record['time']);
+                        $record['time'] = $record_time[0];
+                        $record['timeadd'] = str_replace(':','',date("H:i:s",$record['time']));
+                        $record['timeadd'] = $record['timeadd'].$record_time[1];
+                   {wc:php:end}
+                   <ul class="Record_content">
+                        <li class="time"><b>{wc:fun:date("Y-m-d",$record['time'])}</b>{wc:fun:date("H:i:s",$record['time'])}.{wc:$record_time[1]}</li>
+                        <li class="timeVal">{wc:$record['timeadd']}</li>
+                        <li class="nem"><a class="gray02" href="{WEB_PATH}/uname/{wc:fun:idjia($record['uid'])}" target="_blank">{wc:fun:get_user_name($record['uid'])}</a></li>
+                        <li class="name"><a class="gray02" href="{WEB_PATH}/goods/{wc:$record['shopid']}" target="_blank">（第{wc:$record['shopqishu']}期）{wc:$record['shopname']}</a></li>
+                        <li class="much">{wc:$record['gonumber']}人次</li>
+                    </ul>
+                    {wc:loop:end}
+                </div>
+-->					
+				                            {wc:php:start}
+                                $result1 = 0;
+                                foreach ($addList as $key => $value) {
+                                    $tmp = explode('.', $value['time']);
+                                    $item_time = date("His",$tmp[0]);
+                                    $item_time .= $tmp[1];
+                                    $result1 = bcadd($result1, $item_time);
+                                }
+                                $result2 = str_split($item['period1']);
+                            {wc:php:end}
+				
+                <div class="Immediate">
+                  <span style="left:0px;right:0px; font-size:18px">该商品已售完，正在等待揭晓！</span>
+                </div>
+                <div class="Immediate">
+                  <span style="left:-255px;right:0px;">1、售罄时间: {wc:fun:date("Y-m-d H:i:s",$item['overtime'])}</span>
+                </div>
+                <div class="Immediate">
+                  <span style="left:-110px;right:0px;">2、{wc:if $item['period1']!=''}"重庆时时彩" 第 {wc:$item['period1_date']} 期开奖结果:{wc:$item['period1']} {wc:else}正在等待"重庆时时彩" 第 {wc:$item['period1_date']} 期开奖。{wc:if:end}<a href="http://baidu.lecai.com/lottery/draw/sorts/cqssc.php?agentId=5591" target="_blank"><font color="#D80000">开奖查询<font color="red"></font></a></span>
+                </div>
+                <div class="Immediate">
+                  <span style="left:0px;right:0px;">3、若该期“重庆时时彩”官方未开奖超24小时，则采用下一期开奖结果,依次顺延。</span>
+                </div>
+                <div class="Immediate">
+                  <span style="left:-280px;right:0px;">4、详细揭晓规则见：<a href="{G_WEB_PATH}/?/single/newbie" target="_blank"><font color="#D80000">开奖规则</font></a></span>
+                </div>
+				
+				<div class="Immediate" style="height:55px;">
+                  <span style="left:0px;right:0px;top:5px; color:#D80000;"><font size="4">计算公式:</font>
+				  </br>幸运码=【50个时间求和({wc:$result1})+时时彩号(?)】÷总人次({wc:$item['canyurenshu']})+原始数(10000001)</a></span>
+                </div>
+	{wc:if:end}	
+			
+		
+                            <div class="my-buy clearfix">
+                              {wc:if $item['shenyurenshu'] == '0'}{wc:else}<p class="mine">我要参与</p>{wc:if:end}
+                                <div id="divNumber" {wc:if $item['shenyurenshu'] == '0'}{wc:else} class="option-wrapper clearfix"{wc:if:end}>
+                                  {wc:if $item['shenyurenshu'] == '0'}{wc:else}<a href="javascript:;" class="mius"id="shopsub">-</a>
+                                    <input class="input-num" value="1" type="text" onKeyUp="value=value.replace(/\D/g,'')" id="num_dig">
+                                    <a href="javascript:;" class="add" id="shopadd">+</a>{wc:if:end}
+                                </div>{wc:if $item['shenyurenshu'] == '0'}{wc:else}
+                                <ul class="check-num clearfix"></ul>
+                                <p class="fl">人次</p>
+                                <div class="mine-prob" style="display:none;"><i></i></div>
+                                <span id="span_tip"></span>
+								<span id="chance" class="gray03">购买人次越多获得几率越大哦！</span>{wc:if:end}
+                            </div>	
+{wc:if $item['shenyurenshu'] == '0'}{wc:else}
+							<div style="display:none;" id="hqid">{wc:$item['id']}</div>{wc:if:end}
+                            <div id="divBuy" class="consume-wrapper {wc:if $item['shenyurenshu'] == '0'}{wc:else} clearfix {wc:if:end}">
+							{wc:if $item['shenyurenshu'] == '0'}
+							{wc:else}
+                                <a href="javascript:;" id="consume-now" class="Det_Shopbut"><font size="5px">立即夺宝</font></a>
+							
+                                <a href="javascript:;" id="consume-addcar" class="Det_Cart"><font size="4px">加入购物车</font></a>
+								{wc:if:end}
+                            </div>														
+                        <br/> 
+                        <div {wc:if $item['shenyurenshu'] == '0'}{wc:else} class="about-tips clearfix" {wc:if:end}>
+						{wc:if $item['shenyurenshu'] == '0'}{wc:else}
+                            <ul class="f-inner clearfix">
+                                <li class="z-beginning">三大服务保证：</li>
+                                <li><a><i class="ng-xq-bg t1"></i>100%公平公正</a></li>
+                                <li class="z-lines"><b></b></li>
+                                <li><a><i class="ng-xq-bg t2"></i>100%正品保证</a></li>
+                                <li class="z-lines"><b></b></li>
+                                <li><a><i class="ng-xq-bg t3"></i>全国免费配送</a></li>
+                            </ul>{wc:if:end}
+                        </div>
+					<br/> 
+								
+							
+
+            
+   <script>  
+   	 $(function(){
+		 $("#num_dig").mousemove(function(){
+		  $(this).css("border","1px solid #D80000");		 
+		});
+		 $("#num_dig").mouseout(function(){
+		  $(this).css("border","1px solid #CFCFCF");		 
+		});		
+	});
+   </script>       
+           
+<script type="text/javascript">
+
+var intDiff = parseInt(600);//倒计时总秒数量
+
+function timer(intDiff){
+	window.setInterval(function(){
+	var day=0,
+		hour=0,
+		minute=0,
+		second=0;//时间默认值		
+	if(intDiff > 0){
+		day = Math.floor(intDiff / (60 * 60 * 24));
+		hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+	}
+	if (minute <= 9) minute = '0' + minute;
+	if (second <= 9) second = '0' + second;
+	$('#day_show').html(day+"天");
+	$('#hour_show').html('<s id="h"></s>'+hour+'时');
+	$('#minute_show').html('<s></s>'+minute+'分');
+	$('#second_show').html('<s></s>'+second+'秒');
+	intDiff--;
+	}, 1000);
+} 
+
+$(function(){
+	timer(intDiff);
+});	
+</script>

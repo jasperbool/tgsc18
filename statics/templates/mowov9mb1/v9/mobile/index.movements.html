@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{wc:$key}</title>
+    <meta content="app-id=518966501" name="apple-itunes-app"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link href="{G_TEMPLATES_CSS}/old/css/mobile/comm.css" rel="stylesheet" type="text/css"/>
+     <script id="pageJS" data="{WEB_PATH}/statics/templates/teyunbao/js/mobile/Cartindex.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/old/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=yes"/>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/echarts.min.js"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/ecstat.min.js"></script>
+    <link href="{G_TEMPLATES_CSS}/old/css/mobile/comm.css" rel="stylesheet" type="text/css"/>
+    <link href="{G_TEMPLATES_CSS}/old/css/mobile/member.css" rel="stylesheet" type="text/css"/>
+      <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/datatool.min.js"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/china.js"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/world.js"></script>
+    <!--script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/f2f833d04948427d89a05007f5c878bf.js"></script-->
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/bmap.min.js"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/simplex.js"></script>
+<!--TabBox-->
+    <script src="{G_TEMPLATES_JS}/old/js/mobile/jquery-1.11.1.min.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/old/js/mobile/movements/jquery.datatables.js"></script>
+    <link href="{G_TEMPLATES_CSS}/old/css/mobile/movements/jquery.datatables.css" rel="stylesheet" type="text/css"/>
+	
+
+
+
+
+
+    <style>
+        .TabBox {
+            height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .btn_select{
+            border: 20px solid white;
+            border-radius: 5px;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 12px;
+            background-color: #dc332d;
+            color: white;
+            display: inline-block;
+        }
+        .btn_unselect{
+            border: 1px solid #dc332d;
+            border-radius: 5px;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 12px;
+            color: black;
+            display: inline-block;
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+        var Path = new Object();
+        Path.Skin = "{WEB_PATH}/statics/templates/teyunbao";
+        Path.Webpath = "{WEB_PATH}";
+        Path.imgpath = "{WEB_PATH}/statics";
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement, Myload: function (B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function () {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            }, getScript: function (A, C) {
+                var B = function () {
+                };
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            }, getStyle: function (A, B) {
+                var B = function () {
+                };
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+
+      //  Base.getScript('{WEB_PATH}/statics/templates/teyunbao/js/mobile/Bottom.js?v=' + GetVerNum());
+
+
+ 
+    </script>
+</head>
+
+<body>
+<br>
+<div class="shopinfo ">
+    <a class="fl z-Limg" href="{WEB_PATH}/mobile/mobile/item/{wc:$item['id']}"><em class="z-Imgtxt"></em><img src="{G_UPLOAD_PATH}/{wc:$item['thumb']}" border=0 /></a>
+    <div class="u-Rcd-r gray9"><p class="z-Rcd-tt"><a href="{WEB_PATH}/mobile/mobile/item/{wc:$item['id']}" class="gray6">第{wc:$item['qishu']}期{wc:$item['title']}{wc:$item['title2']}</a>
+    </p>
+        <div class="Progress-bar">
+            <p class="u-progress">
+                <span  class="pgbar" style="width:{wc:$item['canyurenshu']/$item['zongrenshu']*100}%">
+                <span class="pging"></span>
+                </span>
+            </p>
+            <ul class="Pro-bar-li">
+                <li class="P-bar01" style="width: 25%"><em>{wc:$item['canyurenshu']}</em>已参与</li>
+                <li class="P-bar02" style="width: 25%"><em>{wc:$item['zongrenshu']}</em>总需人次</li>
+                <li class="P-bar03" style="width: 25%"><em>{wc:$item['shenyurenshu']}</em>剩余</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+
+    function execute(data) {
+        $(".z-Limg").attr("href", Gobal.Webpath+'/mobile/mobile/item/'+data['id']);
+        $(".z-gray6").attr("href", Gobal.Webpath+'/mobile/mobile/item/'+data['id']);
+        $(".gray6").html('(第'+data['qishu']+'期)'+data['title']);
+
+        var imgsrc=Gobal.Webpath.replace("?","/statics/uploads/")+data["thumb"]
+
+        $("img").attr("src",imgsrc);
+
+        $(".pgbar").css("width",data[" bl"]);
+
+        $(".P-bar01 em").html(data["canyurenshu"]);
+        $(".P-bar02 em").html(data["zongrenshu"]);
+        $(".P-bar03 em").html(data["shengyu"]);
+    }
+
+    // setInterval(function () {
+    //     var url="http://cy.yungoucms.cn/?";
+    //   $.get(url+"/mobile/movements/getMapInfo/{wc:$item['id']}", function(result){
+    //              execute(result);
+    //         });
+    // }, 5000)
+</script>
+
+
+
+<!-- <div class="btn_ btn_select">近二十期</div>
+<div class="btn_ btn_unselect">近十五期</div>
+<div class="btn_ btn_unselect">近十期</div>
+<div class="btn_ btn_unselect">近五期</div>
+ -->
+
+<div id="container" style="height: 100%"></div>
+
+<script type="text/javascript">
+    var worldMapContainer = document.getElementById('container');
+
+    //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+    var resizeWorldMapContainer = function () {
+        worldMapContainer.style.width = window.innerWidth * 0.97 + 'px';
+        worldMapContainer.style.height = window.innerHeight * 0.5 + 'px';
+    };
+    //设置容器高宽
+    resizeWorldMapContainer();
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(worldMapContainer);
+    var app = {};
+    option = null;
+
+    var datas = [];
+    var dats = [];
+{wc:loop $itemlist $shoplist}
+    dats.push({wc:$shoplist['goucount']});
+    datas.push({wc:$shoplist['qishu']});
+{wc:loop:end}
+ 
+    
+    dats=dats.reverse();
+    datas=datas.reverse();
+    option = {
+        title: {
+            text: '走势图仅供参考'
+        },
+
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: '3%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: datas
+        },
+        yAxis: {
+            type: 'value',
+        },
+        series: [{
+            name: '中奖位次',
+            type: 'line',
+            stack: '总量',
+            data: dats,
+            label: {
+                normal: {
+                    show: true
+                }
+            }
+        }]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
+
+
+<div class="TabBox">
+    <table class="data-table" width="95%">
+        <thead>
+        <tr>
+            <th>期数</th>
+            <th>中奖人</th>
+            <th>幸运码</th>
+            <th>位次</th>
+            <th>购买数</th>
+        </tr>
+        </thead>
+        <tbody>
+        {wc:loop $itemlist $shoplist}
+            <tr>
+                <td>{wc:$shoplist['qishu']}</td>
+                <td>{wc:$shoplist['q_user']}</td>
+                <td>{wc:$shoplist['q_user_code']}</td>
+                <td>{wc:$shoplist['goucount']}</td>
+                <td>{wc:$shoplist['buycount']}</td>
+            </tr>
+        {wc:loop:end}
+        </tbody>
+    </table>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('.data-table').dataTable({
+            "searching": false, //是否允许Datatables开启本地搜索
+            "paging": false, //是否开启本地分页
+            "lengthChange": false, //是否允许用户改变表格每页显示的记录数
+            "info": false, //控制是否显示表格左下角的信息
+            "columnDefs": [{
+                "targets": 'nosort', //列的样式名
+                "orderable": false //包含上样式名‘nosort’的禁止排序
+            }],
+            //跟数组下标一样，第一列从0开始，这里表格初始化时，第四列默认降序
+            "order": [[ 0, "desc" ]] //asc升序   desc降序  "order": [[ 3, "desc" ]]默认第四列为降序排列
+        });
+    });
+</script>
+
+<script>
+   //  $(".btn_").click(function (){
+   //      $(".btn_select").addClass("btn_unselect");
+   //      $(".btn_select").removeClass("btn_select");
+
+   //      $(this).removeClass("btn_unselect");
+   //      $(this).addClass("btn_select");
+
+   //      var count=0
+   //      switch ($(this).html()){
+   //          case "近十五期":
+   //              count=15;
+   //              break;
+   //          case "近十期":
+   //              count=10;
+   //              break;
+			// case "近五期":
+   //              count=5;
+   //              break;
+   //          default:
+   //              count=20;
+   //              break;
+   //      }
+   //      GetJPData(Gobal.Webpath, "movements", "getbuyinfo/{wc:$item['id']}/"+count, redraw);
+   //  })
+    // function redraw(data) {
+    //     datas = [];
+    //     dats = [];
+
+
+
+    //     for (i=0;i<data.length;i++){
+    //         dats.push(data[i]['goucount']);
+    //         datas.push(data[i]['qishu']);
+    //     }
+
+    //     dats=dats.reverse();
+    //     datas=datas.reverse();
+
+    //     // console.log("xxxxxxxxxxx=>",datas);
+    //     // console.log("sssssssssssssssssss=>",dats);
+
+
+    //     option.xAxis.data = datas;
+    //     option.series[0].data = dats;
+    //     myChart.setOption(option,true);
+    //     myChart.clear();
+    //     myChart.setOption(option,true);
+    // }
+	// function joinin(){
+	// 	$.post("{WEB_PATH}/mobile/ajax/addShopCart/{$item['id']}/1", {}, function (data) {
+	// 		window.location.href="{WEB_PATH}/mobile/cart/cartlist";
+	// 	}, 'json');
+	// }
+	function addcar(){
+	
+	}
+</script>
+    <link href="{G_TEMPLATES_CSS}/old/css/mobile/goods.css" rel="stylesheet" type="text/css" />
+    <div id="btnBuyBox" class="pBtn" codeid="">
+        <a style="margin:0;width: 16%;height: 33px;" class="xiangxigws" href="{WEB_PATH}"><i style="margin: 6px auto;float: none;position: relative;">&nbsp;</i></a>
+    <!-- 	<a style="width: 66%;margin-right: 2%;margin-left: 1%;"  class="fl buyBtn" onClick="joinin()">立即参与</a> -->
+    <a style="width: 66%;margin-right: 2%;margin-left: 1%;"  class="fl buyBtn" href="{WEB_PATH}/mobile/mobile/item/{wc:$newid['id']}">立即参与</a>
+        <a style="margin:0;width:13%;height: 33px;" class="xiangxigw" href="{WEB_PATH}/mobile/cart/cartlist"><i style="margin: 6px auto;float: none;position: relative;" id="btnCart" class="">&nbsp;</i></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{wc:templates "index","header"}
+
+<style>
+  .w_latest{position:relative;}
+  .w_latest .w_add_tag{display:block;width:54px;height:53px;position: absolute;left:0px;top:0px;}
+  .w_text .w_add_multiple_box{position: relative;margin-top:4px;}
+  .w_text dd .w_add_multiple{display:block;width:176px;height:30px;border:1px solid #ddd;border-radius:4px;text-align: center;color:#dd2726;font-size:16px;line-height:30px;background:#fff;cursor: pointer;}
+.views {display:none;}
+.post:hover .views {display:block;}
+</style>
+<div class="w_con">
+    <div class="w_latest_title">
+    <h2 class="w_title w_title_one">
+    	<a class="w_waiting" href="./goods_lottery">最新揭晓</a>
+        <b>（到目前为止最新揭晓<span id="nameType">商品</span><tt id="total">{wc:$total}</tt>件）</b>
+    </h2>
+    <h2 class="w_title w_title_two">即将揭晓<b></b></h2>
+    </div>
+    <div class="w_announced">
+    	<div class="w_announced_one">
+
+	       	<ul>
+					{wc:loop $shopqishu $qishu}
+                    {wc:php:start}
+                    	$qishu['q_user'] = unserialize($qishu['q_user']);	
+                    {wc:php:end}
+			<li class="w_latest goods1156_491">
+			<div class="w_latestImg">
+			<a class="w_goods_img" href="{WEB_PATH}/dataserver/{wc:$qishu['id']}" target="_blank">
+			<img src="{G_UPLOAD_PATH}/{wc:$qishu['thumb']}"></a>
+			</div>
+			<a class="w_goods_three" href="{WEB_PATH}/dataserver/{wc:$qishu['id']}" target="_blank">(第{wc:$qishu['qishu']}期){wc:$qishu['title']}</a>
+			<b>商品价值：￥{wc:$qishu['money']}</b>
+			<div class="w_different w_different_add">
+			<div class="w_figure">
+			<img src="{G_UPLOAD_PATH}/{wc:$qishu['q_user']['img']}">
+			</div>
+			<dl class="w_text">
+			<dd>获得者：<a href="{WEB_PATH}/uname/{wc:fun:idjia($qishu['q_uid'])}">{wc:fun:get_user_name($qishu['q_user'])}</a></dd>			
+										{wc:if $sid_go_record['ip']}
+			<dd>来自：<em>
+
+							{wc:fun:get_ip($sid_go_record['id'],'ipcity')}
+
+			</em></dd>
+										{wc:if:end}
+			<dd>幸运号码：<i>{wc:$qishu['q_user_code']}</i></dd>
+			<dd>本期参与：<i>{wc:fun:get_user_goods_num($qishu['q_uid'],$qishu['id'])}</i>人次</dd>
+			<dd>揭晓时间：{wc:fun:microt($qishu['q_end_time'],'r')}</dd>
+			<dd class="w_add_multiple_box post">
+			<span class="w_add_multiple views">回报率：{wc:$qishu['rate']}倍</span>
+			<a class="w_span w_span_other views" href="{WEB_PATH}/dataserver/{wc:$qishu['id']}" target="_blank">查看详情</a>
+			</dd>
+			</dl>
+			</div>
+			</li>
+			{wc:loop:end}
+			</ul>
+			{wc:if $total>$num}
+					<div class="pagesx">{wc:page:two}</div>
+			{wc:if:end}
+       	</div>
+       	<ul class="w_announced_two">
+		{wc:loop $shoplist $list}
+		<li class="w_latest_right">
+		<div class="w_rightImg">
+		<a class="w_goods_img" href="{WEB_PATH}/goods/{wc:$list['id']}" target="_blank">
+		<img id="img_&lt;#=i #&gt;" class="lazy200" data-original="{G_UPLOAD_PATH}/{wc:fun:shopimg($list['id'])}" src="{G_UPLOAD_PATH}/{wc:fun:shopimg($list['id'])}" style="display: inline;">
+		<noscript>&lt;img id="img_&lt;#=i #&gt;" src="{G_UPLOAD_PATH}/{wc:fun:shopimg($list['id'])}" /&gt;</noscript></a>
+		</div>
+		<a class="w_goods_three" href="{WEB_PATH}/goods/{wc:$list['id']}" target="_blank">{wc:fun:_strcut($list['title'],28)}</a>
+		<b>总需：{wc:$list['zongrenshu']} 人次</b>
+		<div class="w_line">
+		<span style="width:{wc:fun:width($list['canyurenshu'],$list['zongrenshu'],100)}%;"></span>
+		</div><ul class="w_number">
+		<li class="w_amount">{wc:$list['canyurenshu']}</li>
+		<li class="w_amount w_amount_right">{wc:$list['zongrenshu']-$list['canyurenshu']}</li>
+		<li>已参与人次</li>
+		<li class="w_amount_right">剩余人次</li>
+		</ul>
+		<a href="{WEB_PATH}/goods/{wc:$list['id']}" title="我来包尾" class="w_package" onclick="jwebox.goshopnow({wc:$shop['id']},'{WEB_PATH}')">我来包尾</a></li>
+		{wc:loop:end}
+		</ul>
+       	<div class="w_clear"></div>
+    </div>
+</div>
+ {wc:templates "index","footer"}

@@ -1,0 +1,101 @@
+var moveActived, msgStartY, msgMoveY, timer,
+    audio = new Audio('/bgm/msg.mp3');
+
+$(function () {
+    var msgBox = $('#msg-box'),
+        originalTop,
+        outerH = msgBox.outerHeight(),
+        msgCate = $('#msg-cate'),
+        msgTime = $('#msg-time'),
+        msgTitle = $('#msg-title'),
+        msgDesc = $('#msg-desc'),
+        getActMsg = '/index.php/mobile/message/getActMsg',
+        getNewMsg = '/index.php/mobile/message/getNewMsg';
+        getMsgNum = '/index.php/mobile/message/getMsgNum';
+
+    msgBox.on('touchstart touchmove touchend', function (e) {
+        e.preventDefault();
+        var type = e.type;
+        switch (type) {
+            case 'touchstart':
+                moveActived = 0;
+                clearTimeout(timer);
+                msgStartY = e.originalEvent.touches[0].clientY;
+                break;
+
+            case 'touchmove':
+                msgMoveY = e.originalEvent.touches[0].clientY;
+                msgMove(msgBox, originalTop, outerH);
+                break;
+
+            case 'touchend':
+                msgEnd(msgBox, originalTop, outerH);
+                break;
+        }
+    });
+
+    $.getJSON(getMsgNum,function (data) {
+        if(data.code==1 && data.num>0){
+            $('#message').text(data.num).show();
+        }
+    });
+
+
+    $.getJSON(getActMsg, function (act) {
+        if (act.success) {
+            $.getJSON(getNewMsg, function (msg) {
+                if (msg.success) {
+                    audio.play();
+
+                    msg = msg.result;
+                    // msgCate.html(msg.cateName),
+                        msgTime.html(msg.sendTime),
+                        msgTitle.html(msg.title),
+                        msgDesc.html(msg.description);
+
+                    msgBox.attr('data-url', msg.url).attr('data-id', msg.id);
+
+                    msgBox.animate({'top': '.5rem'}, 500, function () {
+                        originalTop = parseInt(msgBox.css('top'));
+                        timer = setTimeout(function () {
+                            msgBox.animate({'top' : '-10rem'}, 500);
+                        }, 5000);
+                    });
+                }
+
+            })
+        }
+    })
+});
+
+function msgMove (msgBox, originalTop, outerH) {
+    moveActived = 1;
+    var minTop = 10 - outerH,
+        dist = msgMoveY - msgStartY + originalTop;
+
+    dist = dist > originalTop ? originalTop : (dist < minTop ? minTop : dist);
+
+    // console.log(msgStartY, msgMoveY, dist);
+
+    msgBox.css('top', dist + 'px');
+}
+
+function msgEnd (msgBox, originalTop, outerH) {
+    var minTop = - outerH / 2,
+        nowTop = parseInt(msgBox.css('top'));
+
+    msgBox.css('top', originalTop + 'px');
+    if (nowTop < minTop)
+        msgBox.hide();
+    else if (!moveActived) {
+        var id =  msgBox.data('id'),
+            url = msgBox.data('url');
+
+        $.get('/index.php/mobile/message/readMsg/', {id : id});
+        location.href = url;
+    } else
+        timer = setTimeout(function () {
+            msgBox.animate({'top' : '-10rem'}, 500);
+        }, 5000);
+
+}

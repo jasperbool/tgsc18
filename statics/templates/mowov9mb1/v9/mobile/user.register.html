@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>注册 - {wc:$webname}触屏版</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<!-- 	<link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" /> -->
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Register.js" language="javascript" type="text/javascript"></script>
+</head>
+    <style>
+      .cils{
+          background: url(../../images/mobile/setIcon.png);
+          background-size: 60px auto;
+        }
+          .cilsnew {
+            background: #fff none repeat scroll 0 0!important;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            height: 16px;
+            margin-right: 4px;
+            position: relative;
+            top: 2px;
+            width: 16px;
+        }
+        .registerCon li {
+            margin: 15px 10%;
+        }
+        .title {
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+            font-family: "微软雅黑";
+            color: #000;
+        }
+        li.check{
+            white-space: nowrap;
+        }
+        .registerCon li label, .registerCon li input{
+            color: #000;
+            font-size: 16px;
+        }
+        .registerCon li label {
+            letter-spacing: 10px;
+            padding-right: 10px;
+        }
+        .registerCon li input{
+            display: inline-block;
+            height: 40px;
+            width: 70%;
+        }
+        li.acc, li.pwd {
+            border-bottom: 1px solid #ccc;
+        }
+        li.btn-register a {
+            width: 50%;
+            margin: 0 auto;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #F60;
+            border-radius: 5px;
+            color: #f60;
+        }
+        .registerCon li span em {
+            background-position: 0 -8px;
+            background-repeat: no-repeat;
+            float: left;
+            height: 20px;
+            width: 20px;
+            margin-right: 2px;
+        }
+      
+        .registerCon li.check span {
+            color: #7a7d84;
+        }
+        .registerCon li.check a {
+            color: #00A8E8;
+        }
+        .registerCon li.check a {
+            line-height: 23px;
+        }
+        #mask {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #pop-captcha {
+            position: absolute;
+            top: 45%;
+            left: 23%;
+            height: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .gt_mobile_holder {
+            display: inline-block;
+            margin: 100px auto;
+        }
+
+        /*阅读协议提示*/
+        .noCheck em:before {
+            content: '\2794';
+            display: block;
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            font-size: 1rem;
+            line-height: 1rem;
+            left: -1.5rem;
+            top: 0;
+            color: #F60;
+            z-index: -1;
+            -webkit-animation: move 1s infinite;
+        }
+        @-webkit-keyframes move {
+            0% {
+                left: -1.5rem;
+            }
+
+            100% {
+                left: -1rem;
+            }
+        }
+        /*end*/
+
+        /*极验3.0*/
+        #embed-captcha {
+            width: 100%;
+        }
+        .geetest_holder.geetest_wind {
+            width: 100% !important;
+            min-width: 256px !important;
+        }
+        .geetest_logo, .geetest_success_logo { /*隐藏极验官网链接*/
+            display: none;
+        }
+        #wait {
+            color: #F60;
+            font-size: .8rem;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+        /*end*/
+
+      li.acc, li.code {
+          position: relative;
+          border-bottom: 1px solid #ccc;
+      }
+
+      .getCode{
+          width: 80px;
+          height: 30px;
+          background: #f60;
+          border: none;
+          color: #fff;
+          right: 0;
+          cursor: pointer;
+          border-radius: 5px;
+          top: 4%;
+      }
+      
+    </style>
+<body>
+
+    <div class="h5-1yyg-v1" id="content">
+        
+<!-- 栏目页面顶部 -->
+ <section>
+        <div class="registerCon">
+            <ul>
+                <li class="title">注册</li>
+                <li class="acc">
+                    <label for="txtAccount">账号</label>
+                    <input id="userMobile" type="text" placeholder="请输入您的手机号码" class="lEmail">
+                </li>
+                <li class="pwd">
+                    <label for="txtPassword">密码</label>
+                    <input id="password" type="password" class="lPwd" placeholder="请输入密码">
+                </li>
+                <li class="code" style="display: block;">
+                    <input type="tel" id="txtVerify" class="lcode" placeholder="请输入验证码" value="" />
+                    <button class="getCode" type="button" id="getMobileCode">获取验证码</button>
+                    <input type="hidden" name="sendCode" id="sendCode" value="">
+                </li>
+                <li class="check"><span id="isCheck" class="noCheck"><em onclick="oncl()" class="cilsnew"></em>我已阅读并同意</span><a href="{G_TEMPLATES_CSS}/news/服务协议.html">《泰广商城用户服务条款》</a></li>
+                <li class="btn-login" ><a onclick="ytrname()" id="btnNext" class="nextBtn  grayBtn">下 一 步</a>
+            </li></ul>
+        </div>
+    </section>
+<script type="text/javascript">
+  function oncl(){
+    var now = $("#isCheck em").attr("class");
+    if(now == 'cils'){
+       $("#isCheck em").addClass('cilsnew');
+       $("#isCheck em").removeClass('cils');
+       $("#btnNext").addClass('grayBtn');
+        $("#btnNext").removeClass('orgBtn');
+    }else{
+       $("#isCheck em").addClass('cils');
+       $("#isCheck em").removeClass('cilsnew');
+       
+          $("#btnNext").addClass('orgBtn');
+        $("#btnNext").removeClass('grayBtn');
+    }
+   
+  }
+
+ function ytrname(){
+  var u =$("#userMobile").val();
+  var p =$("#password").val();
+  var inputCode = $('#txtVerify').val();
+  var sendCode = $('#sendCode').val();
+  if(u == ''){
+    return false;
+  }
+  if(p==''){
+    return false;
+  }
+  if(inputCode != sendCode){
+      $.PageDialog.fail('请输入正确的验证码');
+      return false;
+  }
+   location.replace("/mobile/user/mobilecode/" + u+"/"+p);
+  }
+  
+
+</script> 
+<!-- 内页顶部 -->
+
+ <!--    <header class="g-header">
+        <div class="head-l">
+	        <a href="javascript:;" onClick="history.go(-1)" class="z-HReturn"><s></s><b>返回</b></a>
+        </div>
+        <h2>注册</h2>
+        <div class="head-r">
+	        <a href="{WEB_PATH}/mobile/mobile" class="z-Home"></a>
+        </div>
+    </header> -->
+
+  <!--    <section>
+        <div class="registerCon">
+	        <ul>
+    	        <li><input id="userMobile" type="tel" placeholder="请输入您的手机号码" class="rText"><s class="rs1"></s>
+				</li>
+				<li><input type="password" id="txtPassword" placeholder="密码" class="rText"><s class="rs3"></s>
+				</li>
+                <li><a id="btnNext" class="nextBtn  orgBtn">下一步</a></li>
+                <li><span id="isCheck"><em></em>我已阅读并同意</span><a href="{WEB_PATH}/mobile/mobile/terms">用户协议</a></li>
+            </ul>
+            <div class="fastLogin">
+            {wc:php:start}
+                    $conn_cfg = System::load_app_config("connect",'','api');
+            {wc:php:end}  
+                              <h2>        
+                                  <span class="line_l"></span> 一键登录<span class="line_r"></span>
+                                </h2>     
+                                <div class="fastInfo">
+                                          <a  href="{WEB_PATH}/api/qqlogin">
+                                {wc:if $conn_cfg['qq']['off']}   
+                                              <img src="{G_TEMPLATES_IMAGE}/mobile/qq.png" alt="" class="user_login_q">
+                                {wc:if:end} 
+                                          </a>
+                                          <a  href="{WEB_PATH}/api/wxlogin">
+                                {wc:if $conn_cfg['weixin']['off']}   
+                                              <img src="{G_TEMPLATES_IMAGE}/mobile/wx.png" alt="" class="user_login_w">
+                                {wc:if:end} 
+                                      </a>
+                                 </div>
+              </div>
+        </div>
+        </section>  -->
+        
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+
+  var Path = new Object();
+  // Path.Skin="{G_WEB_PATH}/statics/templates/{wc:fun:_cfg('templates_name')}";
+  Path.Skin="{G_TEMPLATES_STYLE}";
+  Path.Webpath = "{WEB_PATH}";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+  var checkcode=document.getElementById('checkcode');
+  checkcode.src = checkcode.src + new Date().getTime();
+  var src=checkcode.src;
+  checkcode.onclick=function(){
+      this.src=src+'/'+new Date().getTime();
+  }
+</script> 
+ 
+    </div>
+
+
+    <script>
+        $('#getMobileCode').click(function(){
+            var phone = $('#userMobile').val();
+            if(!(/^1[34578]\d{9}$/.test(phone))){
+                $.PageDialog.fail("手机号码有误，请重填");
+                return false;
+            }
+            $.ajax({
+                url: "/mobile/user/sendRegisterMobileCode/"+phone,
+                type: "get",
+                // data:{'phone':phone},
+                dataType: "json",
+                success:function(data){
+                    // var result = data.parseJSON();
+                    if(data.status == '0'){
+                        $.PageDialog.fail(data.message);
+                        return false;
+                    }else{
+                        $.PageDialog.fail(data.message);
+                        $('#sendCode').val(data.code);
+                        return false;
+                    }
+                }
+            });
+            var step = 59;
+            // $('#btn').val('重新发送60');
+            var _res = setInterval(function(){
+                $("#getMobileCode").attr("disabled", true);//设置disabled属性
+                $('#getMobileCode').val('重新发送'+step);
+                $('#getMobileCode').html('重新发送'+step);
+                step-=1;
+                if(step <= 0){
+                    $("#getMobileCode").removeAttr("disabled"); //移除disabled属性
+                    $('#getMobileCode').val('获取验证码');
+                    $('#getMobileCode').html('获取验证码');
+                    clearInterval(_res);//清除setInterval
+                    $('#getMobileCode').val('重新发送');
+                    $('#getMobileCode').html('重新发送');
+                }
+            },1000);
+            return false;
+        });
+    </script>
+</body>
+</html>

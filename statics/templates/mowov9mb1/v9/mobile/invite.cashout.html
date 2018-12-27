@@ -1,0 +1,439 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <title>申请提现 - {wc:$webname}触屏版</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="{G_TEMPLATES_CSS}/mobile/invite.css" rel="stylesheet" type="text/css" /> -->
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+     <link href="{G_TEMPLATES_CSS}/news/invite.css" rel="stylesheet" type="text/css">
+      <script src="{G_TEMPLATES_CSS}/news/layer/layer.js" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<style type="text/css">
+  .total{
+        margin-top: 0px;
+    background: #fff;
+    border: 0px solid #fff;
+    padding: 0px;
+  }
+</style>
+<div class="h5-1yyg-v11">
+
+    <section class="clearfix">
+        <div class="R-content">
+            <div class="subMenu">
+                <a class="current" data-show="divSQTX" data-hide="divSQCZ">申请提现</a>
+                <a data-show="divSQCZ" data-hide="divSQTX" class="" href="{WEB_PATH}/mobile/invite/cashoutrecharge">充值到账户</a>
+            </div>
+
+            <div class="total">
+                <div class="acct"><span class="title">收入</span>&nbsp;&nbsp;<span class="orange">{wc:$cashouthdtotal}元</span>
+                </div>
+                <div class="acct"><span class="title">余额</span>&nbsp;&nbsp;<span class="orange">{wc:$member['money']}元</span>
+                </div>
+                <div class="acct no-bottom"><span class="title">提现审核</span>&nbsp;&nbsp;<span class="orange">0元</span></div>
+                <div class="acct no-bottom"><a class="block" href="{WEB_PATH}/mobile/invite/record"><span class="orange">提现记录</span></a></div>
+            </div>
+            <div id="divSQTX" class="Apply-con" style="display: block;">
+                <form name="form1" action="" method="post">
+                    <dl class="split">
+                        <dt>提现金额</dt>
+                        <dd><input id="txtAppMoney" type="tel" name="money" class="input-txt inp-money txtAri" value="" maxlength="5" placeholder="免手续费(200元至5万元/次)"></dd>
+                    </dl>
+                    <dl>
+                        <dt>收款姓名</dt>
+                        <dd>
+                            <input name="txtUserName" type="text" id="txtUserName" class="input-txt" maxlength="10" placeholder="请填写收款人姓名">
+                          <!--   <label id="for_payee_list" class="for_bank_class deep_black"><img class="left" src="./申请提现_files/payee.png" alt="">&nbsp;收款人</label> -->
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>收款卡号</dt>
+                        <dd><input name="txtBankNo" type="tel" id="txtBankNo" class="input-txt txtAri" maxlength="19" placeholder="与姓名对应的卡号">
+                        </dd>
+                    </dl>
+                    <dl id="for_bank_list">
+                        <dt>银行名称</dt>
+                        <dd>
+                           <input name="txtBankName" type="text" id="txtBankName" class="input-txt" />
+                          <!--   <label class="for_bank_class">
+                                <span id="select_bank">请选择银行</span>
+                                <img class="right" src="{G_TEMPLATES_CSS}/news/bank_arrow_right.png" alt=""></label> -->
+                        </dd>
+                    </dl>
+                      <dl id="for_bank_list">
+                        <dt>开户支行</dt>
+                        <dd>
+                          <input name="txtSubBank" type="text" id="txtSubBank" class="input-txt" tip="4" />
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>手机号码</dt>
+                        <dd><input name="txtPhone" type="tel" id="txtPhone" class="input-txt txtAri" maxlength="11" placeholder="可联系到您的手机号码">
+                        </dd>
+                    </dl>
+
+                  <!--   <dl>
+                        <dd class="half">
+                            <label class="for_select_class">
+                                <span id="sel_province">-请选择省份-</span>
+                            </label>
+                            <select id="Province" name="Province"><option data-code="" value="null" selected="" disabled="">-请选择省份-</option><option data-code="1" value="北京">北京</option><option data-code="31" value="新疆">新疆</option><option data-code="4" value="重庆">重庆</option><option data-code="19" value="广东">广东</option><option data-code="3" value="天津">天津</option><option data-code="15" value="浙江">浙江</option><option data-code="52993" value="港澳">港澳</option><option data-code="20" value="广西">广西</option><option data-code="11" value="内蒙古">内蒙古</option><option data-code="30" value="宁夏">宁夏</option><option data-code="21" value="江西">江西</option><option data-code="32" value="台湾">台湾</option><option data-code="14" value="安徽">安徽</option><option data-code="24" value="贵州">贵州</option><option data-code="27" value="陕西">陕西</option><option data-code="8" value="辽宁">辽宁</option><option data-code="6" value="山西">山西</option><option data-code="29" value="青海">青海</option><option data-code="22" value="四川">四川</option><option data-code="12" value="江苏">江苏</option><option data-code="5" value="河北">河北</option><option data-code="26" value="西藏">西藏</option><option data-code="84" value="钓鱼岛">钓鱼岛</option><option data-code="16" value="福建">福建</option><option data-code="9" value="吉林">吉林</option><option data-code="2" value="上海">上海</option><option data-code="17" value="湖北">湖北</option><option data-code="23" value="海南">海南</option><option data-code="25" value="云南">云南</option><option data-code="28" value="甘肃">甘肃</option><option data-code="18" value="湖南">湖南</option><option data-code="13" value="山东">山东</option><option data-code="7" value="河南">河南</option><option data-code="10" value="黑龙江">黑龙江</option></select>
+                        </dd>
+                        <dd class="half">
+                            <label class="for_select_class">
+                                <span id="sel_city">-请选择城市-</span>
+                            </label>
+                            <select id="City" name="City">
+                                <option value="null" selected="" disabled="">-请选择城市-</option>
+                            </select>
+                        </dd>
+                    </dl> -->
+
+                    <div class="Apply-button">
+                       
+                        <input type="submit" id="btnSQTX" class="bluebut" title="提交申请" value="提交申请" >
+                    </div>
+                </form>
+            </div>
+            <div id="divSQCZ" class="Apply-con recharge" style="display: none;">
+                <form name="form2" action="http://m.bhzxdy.net/index.php/mobile/invite/cashout/" method="post">
+                    <dl>
+                        <dt>充值金额</dt>
+                        <dd style="margin: 0 auto"><input id="txtCZMoney" name="txtCZMoney" type="tel" onkeyup="value=value.replace(/\D/g,&#39;&#39;)" class="input-txt inp-money txtAri" value="" placeholder="请输入大于1的金额">
+                        </dd>
+                    </dl>
+
+                    <div class="Apply-button">
+                        <input type="submit" name="submit2" id="btnSQCZ" class="bluebut" title="充值" value="充值">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   <!--  <div id="payee-list" class="payee-list">
+        <dt>我的收款人
+            <div id="payee-exit" class="payee-exit"></div>
+        </dt>
+            </div>
+
+    <div id="bank-list" class="bank-list">
+        <ul>
+                        <li class="bank" data-key="gsyh">
+                <div class="bank-logo"><img src="{G_TEMPLATES_CSS}/news/gsyh.png" alt=""></div>
+                <p class="bank-name">工商银行</p>
+            </li>
+                        <li class="bank" data-key="zgyh">
+                <div class="bank-logo"><img src="{G_TEMPLATES_CSS}/news/zgyh.png" alt=""></div>
+                <p class="bank-name">中国银行</p>
+            </li>
+                        <li class="bank" data-key="jsyh">
+                <div class="bank-logo"><img src="{G_TEMPLATES_CSS}/news/jsyh.png" alt=""></div>
+                <p class="bank-name">建设银行</p>
+            </li>
+                        <li class="bank" data-key="nyyh">
+                <div class="bank-logo"><img src="{G_TEMPLATES_CSS}/news/nyyh.png" alt=""></div>
+                <p class="bank-name">农业银行</p>
+            </li>
+                        <li class="bank" data-key="none">
+                <div class="bank-logo"><img src="{G_TEMPLATES_CSS}/news/slide_right.png" alt=""></div>
+                <p class="bank-name">收起</p>
+            </li>
+        </ul>
+    </div> -->
+
+<!--     <script type="text/javascript" src="./申请提现_files/layer.js"></script>
+<link href="./申请提现_files/layer(1).css" rel="stylesheet" type="text/css">
+<link href="./申请提现_files/message.css" rel="stylesheet" type="text/css"> -->
+
+
+
+</div>
+
+    
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+
+  $(function(){
+      $(".subMenu a").click(function(){
+          var id=$(".subMenu a").index(this);
+          $(".subMenu a").removeClass().eq(id).addClass("current");
+          $(".R-content .topic").hide().eq(id).show();
+      });
+
+      $("#linkApply").click(function(){
+          $("#divSQTX").show();
+          $("#divTip").show();
+          $("#divSQCZ").hide();
+      });
+      $("#linkRecharge").click(function(){
+          $("#divSQTX").hide();
+          $("#divTip").hide();
+          $("#divSQCZ").show();
+
+      });
+
+      function trim(s){
+        /*  if(s.length>0){
+              if(s.charAt(0)==" ")
+                  s=s.substring(1,s.length);
+              if(s.charAt(s.length-1)==" ")
+                  s=s.substring(0,s.length-1);
+
+              if(s.charAt(0)==" "||s.charAt(s.length-1)==" ")
+                  return trim(s);
+          }*/
+          return s;
+      }
+      //  提交申请 判断
+      $("#btnSQTX").click(function(){
+          var Money=trim($("#txtAppMoney").val());
+          var UserName=trim($("#txtUserName").val());
+          var BankName=trim($("#txtBankName").val());
+          var Bank=trim($("#txtSubBank").val());
+          var BankNo=trim($("#txtBankNo").val());
+          var Phone=trim($("#txtPhone").val());
+
+
+          if(Money==''){
+
+             // $("#tip1").html("*&nbsp;&nbsp;请输入提现金额");
+             layer.msg("请输入提现金额");
+              return false;
+
+          }else if(UserName==''){
+             // $("#tip2").html("*&nbsp;&nbsp;请输入开户人");
+              layer.msg("请输入开户人");
+              return false;
+
+          }else if(BankName==''){
+             // $("#tip3").html("*&nbsp;&nbsp;请输入银行名称");
+             layer.msg("请输入银行名称");
+              return false;
+
+          }else if(Bank==''){
+              //$("#tip4").html("*&nbsp;&nbsp;请输入开户支行");
+              layer.msg("请输入开户支行");
+              return false;
+
+          }else if(BankNo==''){
+           //   $("#tip5").html("*&nbsp;&nbsp;请输入银行帐号");
+              layer.msg("请输入银行帐号");
+              return false;
+
+          }else if(Phone==''){
+             // $("#tip6").html("*&nbsp;&nbsp;请输入联系电话");
+              layer.msg("请输入联系电话");
+              return false;
+          }else{
+              return true;
+          }
+      });
+
+      $("#txtAppMoney").blur(function(){
+          var Money=trim($("#txtAppMoney").val());
+          layer.msg("111");
+          if(Money==''){
+
+             // $("#tip1").html("*&nbsp;&nbsp;请输入提现金额");
+              layer.msg("请输入提现金额");
+          }else if(Money>{wc:$cashouthdtotal}){
+             // $("#tip1").html("*&nbsp;&nbsp;输入额超出可提现金额");
+              layer.msg("输入额超出可提现金额");
+              $(this).val("");
+          }else if(Money<100){
+             // $("#tip1").html("*&nbsp;&nbsp;佣金余额未满100元,不能提现!");
+              layer.msg("佣金余额未满100元,不能提现!");
+              $(this).val("");
+          }else{
+              $("#tip1").html("");
+          }
+
+      });
+
+
+      $("#txtUserName").blur(function(){
+          var UserName=trim($("#txtUserName").val());
+
+          if(UserName==''){
+             // $("#tip2").html("*&nbsp;&nbsp;请输入开户人");
+              layer.msg("请输入开户人");
+          }else if(!isCardName(UserName)){
+             // $("#tip2").html("*&nbsp;&nbsp;开户人输入有误");
+              layer.msg("开户人输入有误");
+              $(this).val("");
+          }else{
+              $("#tip2").html("");
+          }
+
+      });
+
+      $("#txtBankName").blur(function(){
+          var BankName=trim($("#txtBankName").val());
+
+          if(BankName==''){
+             // $("#tip3").html("*&nbsp;&nbsp;请输入银行名称");
+              layer.msg("请输入银行名称");
+          }else if(!isCardName(BankName)){
+             // $("#tip3").html("*&nbsp;&nbsp;银行名称输入有误");
+              layer.msg("银行名称输入有误");
+              $(this).val("");
+          }else{
+              $("#tip3").html("");
+          }
+
+      });
+
+      $("#txtSubBank").blur(function(){
+          var Bank=trim($("#txtSubBank").val());
+
+          if(Bank==''){
+             // $("#tip4").html("*&nbsp;&nbsp;请输入开户支行");
+              layer.msg("请输入开户支行");
+          }else if(!isCardName(Bank)){
+            //  $("#tip4").html("*&nbsp;&nbsp;开户支行输入有误");
+              layer.msg("开户支行输入有误");
+              $(this).val("");
+          }else{
+              $("#tip4").html("");
+          }
+
+      });
+
+      $("#txtBankNo").blur(function(){
+          var BankNo=trim($("#txtBankNo").val());
+
+          if(BankNo==''){
+             // $("#tip5").html("*&nbsp;&nbsp;请输入银行帐号");
+              layer.msg("请输入银行帐号");
+          }else if(!isNumber(BankNo)){
+              //$("#tip5").html("*&nbsp;&nbsp;银行帐号输入有误");
+              layer.msg("银行帐号输入有误");
+              $(this).val("");
+          }else if(BankNo.length<16){
+             // $("#tip5").html("*&nbsp;&nbsp;银行账号为16-19位数字");
+              layer.msg("银行账号为16-19位数字");
+              $(this).val("");
+          }else{
+              $("#tip5").html("");
+          }
+
+      });
+
+      $("#txtPhone").blur(function(){
+          var Phone=trim($("#txtPhone").val());
+          if(Phone==''){
+             // $("#tip6").html("*&nbsp;&nbsp;请输入联系电话");
+              layer.msg("请输入联系电话");
+          }else if(!isMobile(Phone)){
+             // $("#tip6").html("*&nbsp;&nbsp;联系电话输入有误");
+              layer.msg("联系电话输入有误");
+              $(this).val("");
+          }else{
+
+              $("#tip6").html("");
+          }
+
+      });
+
+      $("#txtCZMoney").blur(function(){
+          var CZMoney=trim($("#txtCZMoney").val());
+          if(CZMoney==''){
+             // $("#tip7").html("<font color='#FF6600'>*&nbsp;&nbsp;请输入提现金额</font>");
+              layer.msg("请输入提现金额");
+          }else if(CZMoney>{wc:$cashouthdtotal}){
+             // $("#tip7").html("<font color='#FF6600'>*&nbsp;&nbsp;输入额超出可提现金额</font>");
+              layer.msg("输入额超出可提现金额");
+              $(this).val("");
+          }else{
+              $("#tip1").html("");
+          }
+
+      });
+
+
+
+      $("#btnSQCZ").click(function(){
+          var CZMoney=trim($("#txtCZMoney").val());
+
+          if(CZMoney==''){
+             // $("#tip7").html("<font color='#FF6600'>*&nbsp;&nbsp;请输入充值金额</font>");
+              layer.msg("请输入充值金额");
+              return false;
+          }else{
+              return true;
+          }
+      });
+
+
+
+
+      //检验汉字
+      function isChinese(s)
+      {
+          var patrn = /^\s*[\u4e00-\u9fa5]{1,15}\s*$/;
+          if(!patrn.exec(s))
+          {
+              return false;
+          }
+          return true;
+      }
+
+      //数字
+      function isNumber(s)
+      {
+          var patrn = /^\s*\d+\s*$/;
+          //var patrn1=/^\s*\d{16}[\dxX]{2}\s*$/;
+          if(!patrn.exec(s))
+          {
+              return false;
+          }
+          return true;
+      }
+      //校验手机号码：必须以数字开头
+      function isMobile(s)
+      {
+          var patrn=/^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
+          if(!patrn.exec(s))
+          {
+              return false;
+          }
+          return true;
+      }
+
+
+
+      //检验姓名：姓名是2-15字的汉字
+      function isCardName(s)
+      {
+
+          var patrn = /^\s*[\u4e00-\u9fa5]{1,}[\u4e00-\u9fa5.·]{0,15}[\u4e00-\u9fa5]{1,}\s*$/;
+          if(!patrn.exec(s))
+          {
+              return false;
+          }
+          return true;
+      }
+
+  })
+
+</script>
+
+</div>
+</body>
+</html>

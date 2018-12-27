@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>{wc:$webname}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link href="{G_TEMPLATES_CSS}/mobile1/comm.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile1/goods.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile1/index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile1/reset.css">
+<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile1/animate.css">
+<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile1/style.css">
+<link href="{G_TEMPLATES_CSS}/mobile1/main.css" rel="stylesheet" type="text/css">
+
+    <script src="{G_TEMPLATES_JS}/mobile1/jweixin.js" language="javascript" type="text/javascript"></script>
+
+<script src="{G_TEMPLATES_JS}/mobile1/jquery.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/js.cookie.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/lodash.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/response.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/swiper.min.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/countdown.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/simpop.min.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/jquery.lazyload.min.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile1/BottomFun.js"></script>
+
+
+<script>
+var DuoBao = {};
+var __data__ = (function(){
+  return JSON.parse('{}');
+})();
+var __user__ = (function(){
+  return JSON.parse('{}');
+
+})();
+var __touchorclick__ = (function(){
+  if ('ontouchend' in document)
+    return 'touchend';
+  else
+    return 'click';
+})();
+</script>
+</head>
+  
+  <body >
+
+    <div class="container">
+<main class="db-main db-main-index">
+<style>
+    .img-topright {
+      padding-right: 0.8rem;
+      padding-top: 1rem;
+      height: 3.5rem;
+      width: auto;
+      float: right;
+    }
+  </style>
+
+<style type="text/css">
+.zxjx>a:link, .zxjx>a:visited, .zxjx>a:hover, .zxjx>a:active,
+.tabs>a:link, .tabs>a:visited, .tabs>a:hover, .tabs>a:active {
+    color: #323232;
+}
+.tab_selected {
+    color: #D80000;
+    border-bottom: 3px solid #D80000;
+}
+.color_blue {
+    color: #2a99e0;
+}
+.btn_buy {
+    font-size: 1rem;
+    border-radius: 50rem;
+    border: 1px solid #D80000;
+    color: #D80000;
+    text-align: center;
+    padding: 0.3rem 0.2rem;
+}
+.item_bottom_container {
+   overflow: hidden;
+   padding: 0 5%;
+   margin-top: 0.8rem;
+   font-size: 1rem;
+}
+.jdt_container {
+    float: left;
+    width: 60%;
+}
+.jdt_container div {
+    color: #646464;
+}
+.buy_container {
+    float: left;
+    width: 40%;
+    text-align: center;
+}
+.tab_load_more {
+    text-align: center;
+    color: #868686;
+    font-size: 1.2rem;
+    padding: 0.8rem 0rem 0rem;
+}
+ 
+
+.m-tt1 {
+    margin: 0;
+    background: #FFF;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(246, 246, 246, 0.8);
+}
+
+.m-tt1 a {
+    width: 100%;
+    display: block;
+    color: #999;
+    padding-left: 5px;
+}
+
+.m-tt1 h2 {
+    width: 100%;
+    margin: 0;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.m-tt1 .z-arrow {
+    width: 8px;
+    height: 8px;
+    border-width: 1px 1px 0 0;
+    float: right;
+    margin-top: 10px;
+    margin-right: 33px;
+}
+
+.m-lott-list {
+    overflow: hidden;
+}
+
+.m-lott-list li {
+    width: 50%;
+    float: left;
+    border-bottom: 1px solid #f5f5f5;
+    border-right: 1px solid #f5f5f5;
+    padding: 0 5px 5px;
+    box-sizing: border-box;
+}
+
+.m-lott-list li:nth-child(n+3) {
+    border-bottom: none;
+}
+
+.m-lott-list li .m-lott-text {
+    float: left;
+    width: 53%;
+    margin: 1% 2%;
+}
+
+.m-lott-list li .m-lott-text p {
+    color: #F60;
+}
+
+.m-lott-list li .m-lott-text a {
+    color: #666;
+    font-size: 12px;
+    display: block;
+    height: 32px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.m-lott-list li .m-lott-pic {
+    float: right;
+    width: 42%;
+    display: block;
+}
+
+.m-lott-list li .m-lott-pic a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.m-lott-list li .m-lott-pic img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    float: right;
+}
+
+.m-lott-list .m-lott-state {
+    clear: left;
+    padding: 2px 0 0 1px;
+}
+
+.m-lott-list .m-lott-state .u-time {
+    color: #F60;
+    padding: 3px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+}
+
+.m-lott-list .m-lott-state .u-time em {
+    padding-right: 3px;
+}
+
+.m-lott-list .m-lott-state .u-user {
+    display: block;
+    margin-top: 18px;
+    width: 53%;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 12px;
+}
+
+.m-lott-list .m-lott-item:nth-child(even) {
+    border-left: none;
+}
+
+.m-lott-list .m-lott-item:nth-child(n+3) {
+    border-top: none;
+}
+
+#published .lott-list {
+    overflow: hidden;
+}
+
+#divLottery {
+    background: #fff;
+}
+
+#divLottery::after {
+    content: "";
+    width: 100%;
+    height: 0px;
+    clear: both;
+    display: block;
+}
+
+#divLottery li {
+    float: left;
+    height: 124px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(246, 246, 246, .7);
+    overflow: hidden;
+}
+
+#divLottery li a {
+    position: relative;
+    display: block;
+}
+
+#divLottery li a.limit::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    bottom: 0;
+    right: 0;
+    background: transparent url("/images/cat_mark.png?180929") no-repeat;
+    background-size: 35px;
+    background-position: 0 -35px;
+}
+
+#divLottery li a.double::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    bottom: 0;
+    right: 0;
+    background: transparent url("/images/cat_mark.png?180929") no-repeat;
+    background-size: 35px;
+    background-position: 0 0;
+}
+
+#divLottery li a.three::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 34px;
+    bottom: 0;
+    right: 0;
+    background: transparent url("/images/cat_mark.png?180929") no-repeat;
+    background-size: 35px;
+    background-position: 0 -71px;
+}
+
+#divLottery li a.lottery::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    bottom: 0;
+    right: 0;
+    background: transparent url("/images/cat_mark.png?180929") no-repeat;
+    background-size: 35px;
+    background-position: 0 -141px;
+}
+
+#divLottery li a.lottery_b::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    bottom: 0;
+    right: 0;
+    background: transparent url("/images/cat_mark.png?180929") no-repeat;
+    background-size: 35px;
+    background-position: 0 -106px;
+}
+
+#divLottery li img {
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 4px;
+}
+
+#divLottery li p {
+    color: #c9c0c0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#divLottery .u-user a {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#divLottery .m-lott-state {
+    margin: 4px 0 10px;
+}
+
+#divLottery .m-lott-state .u-time {
+    padding: 4px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+#divLottery .m-lott-state {
+    text-align: center;
+}
+
+#divLottery .m-lott-pic {
+    margin: 4px auto;
+    width: 70px;
+}
+
+ul {
+    list-style-type: none;
+}	
+#partner { /*战略合作伙伴*/
+    border: none;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+li.ptn {
+    width: 20%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+}
+
+li.ptn > a {
+    display: block;
+    padding: .2rem 0;
+    color: #999;
+    text-align: center;
+    text-decoration: none;
+    outline: 0;
+}
+
+li.ptn a img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    margin-bottom: 2px;
+}
+
+li.ptn a span {
+    text-align: center;
+    font-size: .72rem
+}
+
+#notice { /*首页公告*/
+    position: relative;
+    margin-bottom: 5px;
+    background: #FFF;
+    border-top: 1px solid rgba(246, 246, 246, 0.8)
+}
+
+#notice_log {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 4.2rem;
+    height: 16px;
+    line-height: 17px;
+    color: #F60;
+    font-size: .8rem;
+    text-align: right;
+    background: #FFF;
+    border-left: 1px solid #F60;
+}
+
+.anouncement {
+    height: 40px;
+    width: calc(100% - 6.2rem);
+    overflow: hidden;
+    margin-left: 15px;
+ font-size: 12px;
+}
+
+.anouncement::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 23px;
+    height: 18px;
+    margin: 11px 0 0;
+    border-right: .5rem solid #FFF;
+    background: #FFF url("{G_TEMPLATES_STYLE}/images/mobile/nt.png") center center / contain;
+}
+
+#anMarquee {
+    color: #F60;
+    line-height: 41px;
+    font-size: 15px;
+}
+
+.nav-wrapper {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    height: 44px;
+    position: relative;
+    width: 100%;
+}
+
+.nav-wrapper .nav-wrapper {
+    position: fixed;
+    max-width: 640px;
+    top: 0;
+    border-bottom: 1px solid #eee;
+    z-index: 1;
+}
+
+.nav-wrapper .nav-inner {
+    box-sizing: border-box;
+    float: left;
+    height: 44px;
+    padding-left: 6px;
+    width: 60%;
+}
+
+.nav-wrapper .nav-inner li {
+    float: left;
+    height: 44px;
+    text-align: center;
+    width: 22%;
+}
+
+.nav-wrapper .nav-list {
+    width: 100%;
+}
+
+.nav-wrapper .nav-inner li:last-child {
+    width: 31%;
+}
+
+.nav-wrapper .nav-inner a {
+    display: block;
+    font-size: 14px;
+}
+
+.nav-wrapper .nav-inner li.current span {
+    border-color: #f60;
+    color: #f60;
+}
+
+.nav-wrapper .nav-inner span {
+    border-bottom: 2px solid transparent;
+    color: #999;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+}
+
+.nav-wrapper .select-btn::before {
+    border-bottom-color: #dedede;
+    border-style: solid;
+    top: 30px;
+    z-index: 3;
+}
+
+.nav-wrapper .select-btn::before, .nav-wrapper .select-btn::after {
+    border-color: transparent;
+    border-width: 7px 6px;
+    content: "";
+    display: none;
+    height: 0;
+    left: 50%;
+    margin-left: -6px;
+    position: absolute;
+    width: 0;
+}
+
+.nav-wrapper .select-btn::after {
+    border-bottom-color: #fff;
+    border-style: solid;
+    top: 31px;
+    z-index: 4;
+}
+
+.nav-wrapper .select-btn::before, .nav-wrapper .select-btn::after {
+    border-color: transparent;
+    border-width: 7px 6px;
+    content: "";
+    display: none;
+    height: 0;
+    left: 50%;
+    margin-left: -6px;
+    position: absolute;
+    width: 0;
+}
+
+.nav-wrapper .select-btn {
+    border-left: 1px solid #eee;
+    box-sizing: border-box;
+    color: #999;
+    float: left;
+    font-size: 14px;
+    height: 44px;
+    line-height: 42px;
+    position: relative;
+    text-align: center;
+    width: 20%;
+}
+
+.nav-wrapper .select-icon {
+    background-color: #fff;
+    display: inline-block;
+    height: 12px;
+    overflow: hidden;
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+    width: 13px;
+}
+
+.nav-wrapper .select-icon i:first-child {
+    margin-top: 0;
+}
+
+.nav-wrapper .select-icon i {
+    background-color: #bbb;
+    display: block;
+    height: 2px;
+    margin-top: 3px;
+    width: 13px;
+}
+
+.nav-wrapper .select-total {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    z-index: 4;
+}	
+/*
+*透明购导航图片
+ */
+.navigation {
+    width: calc(100% - 8px);
+    border: 4px solid rgba(246, 246, 246, 0.8);
+    display: flex;
+    border-bottom: 0;
+}
+
+.navigation a, .navigation img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}	
+</style>
+    <!-- 焦点图 -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+       {wc:loop $shop_ad $ad}
+        <div class="swiper-slide swiper-slide-active">
+          <a href="{wc:$ad['link']}">
+            <img alt="{wc:$ad['title']}" src="{G_UPLOAD_PATH}/{wc:$ad['img']}">
+          </a>
+        </div>
+        {wc:loop:end}  
+      </div>
+      <div class="swiper-pagination swiper-pagination-clickable"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+    </div>
+
+<!--
+	<div class="accumulative-number">——————<span style="height:40px;color:#666666;line-height:40px;text-align: center;margin:0 10px;">累计消费人次</span>——————</div>
+        s 注册人数动画 
+        <div class="number">
+			<a href="" target="_blank" class="allNums">
+			<span class="yNumList">
+			<ul id="ulHTotalBuy" style="margin: -30px 0px 10px 25%;">
+                <li class="num" style="display: none;"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+				<li class="num"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+                <li class="num"><cite><em>0</em></cite><i></i></li>
+			</ul></span></a>
+		</div>
+-->
+        <!--e 注册人数动画 -->
+<section class="nva-list" style="padding-top:10px;">
+            <article id="partner" class="m-round m-lott-list">
+                <ul>
+                    <li class="ptn">
+                        <a href="#">
+                            <img src="{G_TEMPLATES_STYLE}/images/mobile/guide_new.png">
+                            <span>新手指南</span>
+                        </a>
+                    </li>
+                    <li class="ptn">
+                        <a href="#">
+                            <img src="{G_TEMPLATES_STYLE}/images/mobile/Exhibition_new.png">
+                            <span>晒单</span>
+                        </a>
+                    </li>
+                    <li class="ptn">
+                        <a href="javascript:;" onclick="showCnt()">
+                            <img src="{G_TEMPLATES_STYLE}/images/mobile/follow_new.png">
+                            <span>关注我们</span>
+                        </a>
+                    </li>
+                    <li class="ptn">
+                        <a href="#">
+                            <img src="{G_TEMPLATES_STYLE}/images/mobile/helper.png">
+                            <span>享购助手</span>
+                        </a>
+                    </li>
+                    <li class="ptn">
+                        <a href="#">
+                            <img src="{G_TEMPLATES_STYLE}/images/mobile/logo_new.png">
+                            <span>APP下载</span>
+                        </a>
+                    </li>
+                </ul>
+            </article>
+            <article id="notice" class="m-lott-list">
+                <a href="javascript:;">
+                    <div class="anouncement">
+                  <marquee  id="anMarquee" style="width:90%;margin-left:20px;">公告：获得商品后超过90天未填写收货地址，视为放弃该商品，请获得商品的用户尽快填写收货地址！咨询热线：4008009593</marquee> 
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="notice_log">历史公告</div>
+                </a>
+            </article>
+            <!--免费抢购-->
+                        <!-- 滑动最新揭晓 -->
+            <section id="published">
+                <div class="m-tt1">
+                    <h2><a href="{WEB_PATH}/mobile/mobile/lottery">最新揭晓<b class="z-arrow"></b></a></h2>
+                </div>
+                <article class="lott-list" style="height: 124px;">
+                    <ul id="divLottery" style="height: 124px; width: 376px; margin-left: 0px;">
+                     <script>
+        (function(){
+          DuoBao.refresh_prize = function refresh_prize(){
+            var $el = $($(this).data('dom_id'));
+            $.get($el.attr('title'), {raw_only: 'true'}, function(data){
+                $el.html(data);
+            });
+          };
+
+        })();
+      </script>
+     {wc:loop $shopqishu $k $qishu}
+      {wc:php:start}
+                  $qishu['q_user'] = unserialize($qishu['q_user']);
+      {wc:php:end} 
+                                                                          
+<li class="m-lott-item" id="r{wc:$qishu['id']}"  style="width: 94px;"><div class="m-lott-pic">   <a href="{WEB_PATH}/mobile/mobile/item/{wc:$qishu['id']}" title="{WEB_PATH}/mobile/mobile/itemajax/{wc:$qishu['id']}"> <img src="{G_UPLOAD_PATH}/{wc:$qishu['thumb']}" border="0" alt="{wc:fun:_strcut($qishu['title'],20)}"></a></div>
+ {wc:if $qishu['q_showtime']=='N'}
+ <p>中奖</p><div class="m-lott-state"><span style="color: #5bb6ea;">{wc:fun:get_user_name($qishu['q_uid'],'username')}</span></div>
+            {wc:else}
+	<p>倒计时</p><div class="m-lott-state">
+	<div style="text-align:center; padding: 0.2rem;white-space: nowrap;text-overflow: ellipsis; overflow: hidden; background-color:#D80000; color:#fff;border-radius:1rem;">
+              <time class="countdown" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;"
+                data-dom_id="#r{wc:$qishu['id']}"
+                data-sec="{wc:fun:ceil($qishu['q_end_time']-time())}"
+                data-text="正在揭晓..."
+                data-delay="1000"
+                data-callback="DuoBao.refresh_prize">开始倒计时</time>
+            </div>
+	</div>
+	{wc:if:end}
+	</li>
+{wc:loop:end}
+                                                
+                                                
+                                            </ul>
+                </article>
+            </section>
+            <!--end-->
+            <div class="navigation">
+                <a class="one" href="{WEB_PATH}/mobile/home/invite">
+                    <img src="{WEB_PATH}/statics/templates/mowov9mb1/img/jifen.jpg?v=123455">
+                </a>
+                <a class="one" style="border-left: 4px solid #f6f6f6;" href="{WEB_PATH}/mobile/lottery">
+                    <img src="{WEB_PATH}/statics/templates/mowov9mb1/img/yaoqing.jpg">
+                </a>
+            </div>
+        </section>
+        
+	
+	
+ 
+	
+    <script> 
+	
+try{ 
+ var isStoped = false; 
+ var oScroll = document.getElementById("scrolllayer"); 
+ with(oScroll){ 
+ noWrap = true; 
+ } 
+ 
+ oScroll.onmouseover = new Function('isStoped = true'); 
+ oScroll.onmouseout = new Function('isStoped = false'); 
+ 
+ var preTop = 0; 
+ var curTop = 0; 
+ var stopTime = 0; 
+ var oScrollMsg = document.getElementById("scrollmessage");
+ 
+ oScroll.appendChild(oScrollMsg.cloneNode(true)); 
+ init_srolltext(); 
+}catch(e) {} 
+ 
+function init_srolltext(){ 
+ oScroll.scrollTop = 0; 
+ setInterval('scrollUp()',20); 
+} 
+ 
+function scrollUp(){ 
+ if(isStoped) return; 
+ curTop += 1; 
+ if(curTop == 19) { 
+ stopTime += 1; 
+ curTop -= 1; 
+ if(stopTime == 180) { 
+ curTop = 0; 
+ stopTime = 0 
+ 
+ } 
+ }else{ 
+ preTop = oScroll.scrollTop; 
+ oScroll.scrollTop += 1; 
+ if(preTop == oScroll.scrollTop){ 
+ oScroll.scrollTop = 0; 
+ oScroll.scrollTop += 1; 
+ } 
+ } 
+} 
+    var mySwiper = new Swiper('.swiper-container', {
+      autoplay: 5000,//可选选项，自动滑动
+      pagination : '.swiper-pagination',
+      paginationClickable :true,
+    })
+	
+ 
+    </script>
+  
+  
+
+   <section class="goodsCon" style="padding-top:10px; ">
+	    <!-- 导航 -->
+	    <div class="goodsNav">
+            <ul id="divGoodsNav">
+       	 	    <li order="10" class="current"><a href="javascript:;">即将揭晓<b></b></a></li>
+                <li order="20"><a href="javascript:;">人气<b></b></a></li>
+                <li order="40"><a href="javascript:;">最新<b></b></a></li>
+                <li order="50" type="price"><a href="javascript:;">价格<em></em><s></s><b></b></a></li>
+                 <li order="">
+                    <a href="javascript:;">商品分类<s class="arrowUp"></s></a>
+                    <dl style="display:none;">
+                        <dd type="0" class="sOrange"><a href="javascript:;">全部</a></dd>
+						{wc:getlist sql="select * from `@#_category` where `model`='1'"}
+						{wc:loop $data $categoryx}
+						<dd><a id="{wc:$categoryx['cateid']}" href="javascript:;">{wc:$categoryx['name']}</a></dd>
+						{wc:loop:end}
+						{wc:getlist:end}
+					</dl>
+                </li>
+           </ul>
+        </div>
+        <!-- 列表 -->
+        <div class="goodsList">
+            <div id="divGoodsLoading" class="loading" style="display:none;"><b></b>正在加载...</div>
+            <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;">点击加载更多</a>
+            <a id="btnLoadMore2" class="loading"  style="display:none;">没有数据</a>
+            <a id="btnLoadMore3" class="loading"  style="display:none;">已经到底了</a>
+        </div>
+    </section>
+	
+  <div id="divGoodsLoading"></div>
+	  
+	  <input type="hidden" id="urladdress" value="list">
+<input type="hidden" id="pagenum" value="1">
+    <script type="text/javascript">
+ $(function (){
+ var url=$("#urladdress").val(),
+			page=$("#pagenum").val();
+   console.log("load")
+    //滚动加载
+   $(window).scroll(function() { 
+
+      if ($(this).scrollTop() + $(window).height() + 20 >= $(document).height() && $(this).scrollTop() > 20) {
+           var url=$("#urladdress").val(),
+      page=$("#pagenum").val();
+    
+
+       if(url!='' && page!=''){
+      glist_json(url+'/'+page); 
+      }
+      }  
+  });  
+
+ })
+
+//打开页面加载数据
+window.onload=function(){
+	glist_json("list/10");
+	//购物车数量
+	$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+		if(data.num){
+			$("#btnCart").append('<em>'+data.num+'</em>');
+			//$("#btnCart1").append('<em>'+data.num+'</em>');
+		}
+	});
+	
+}
+//获取数据
+function glist_json(parm){
+	$("#urladdress").val('');
+	$("#pagenum").val('');
+	$.getJSON('{WEB_PATH}/mobile/mobile/glistajax/'+parm,function(data){
+		$("#divGoodsLoading").css('display','none');		
+		if(data[0].sum){
+			var fg=parm.split("/");
+			$("#urladdress").val(fg[0]+'/'+fg[1]);
+			$("#pagenum").val(data[0].page);
+			for(var i=0;i<data.length;i++){			
+			var ul='<ul><li>';
+				ul+='<span id="'+data[i].id+'" class="z-Limg"><img src="{G_UPLOAD_PATH}/'+data[i].thumb+'"></span>';
+				ul+='<div class="goodsListR">';
+				ul+='<h2 id="'+data[i].id+'">'+data[i].title+'</h2>';
+				ul+='<div class="pRate">';
+				ul+='<div class="Progress-bar" id="'+data[i].id+'">';				
+				ul+='<p class="u-progress"><span class="pgbar" style="width:'+(data[i].canyurenshu / data[i].zongrenshu)*100+'%;"><span class="pging"></span></span></p>';
+				ul+='<ul class="Pro-bar-li">';
+				ul+='<li class="P-bar01"><em>'+data[i].canyurenshu+'</em>已参与</li>';
+				ul+='<li class="P-bar02"><em>'+data[i].zongrenshu+'</em>总需人次</li>';
+				ul+='<li class="P-bar03"><em>'+data[i].shenyurenshu+'</em>剩余</li>';
+				ul+='</ul></div>';
+				ul+='<a class="add " codeid="'+data[i].id+'" href="javascript:;"><s></s></a>';
+				ul+='</div></div></li></ul>';
+				$("#divGoodsLoading").before(ul);			
+			}
+			if(data[0].page<=data[0].sum){
+				$("#btnLoadMore").css('display','block');
+				$("#btnLoadMore2").css('display','none');
+				$("#btnLoadMore3").css('display','none');
+			}else if(data[0].page>data[0].sum){
+				$("#btnLoadMore").css('display','none');
+				$("#btnLoadMore2").css('display','none');
+				$("#btnLoadMore3").css('display','block');
+			}
+		}else{
+			$("#btnLoadMore").css('display','none');
+			$("#btnLoadMore2").css('display','block');	
+			$("#btnLoadMore3").css('display','none');			
+		}
+	});
+}
+$(document).ready(function(){
+	//即将揭晓,人气,最新,价格	
+	$("#divGoodsNav li:not(:last)").click(function(){
+		var l=$(this).index();
+		$("#divGoodsNav li").removeClass().eq(l).addClass('current');
+		var parm=$("#divGoodsNav li").eq(l).attr('order');
+		$("#divGoodsLoading").css('display','block');
+		$(".goodsList ul").remove();
+		var glist=glist_json("list/"+parm);
+	});
+	
+	//商品分类
+	var dl=$("#divGoodsNav dl"),
+		last=$("#divGoodsNav li:last"),
+		first=$("#divGoodsNav dd:first");
+	$("#divGoodsNav li:last a:first").click(function(){		
+		if(dl.css("display")=='none'){
+			dl.show();
+			last.addClass("gSort");
+			first.addClass("sOrange");			
+		}else{
+			dl.hide();
+			last.removeClass("gSort");
+			first.removeClass("sOrange");
+		}
+	});
+	$("#divGoodsNav  dd").click(function(){
+		var s=$(this).index();
+		var t=$("#divGoodsNav .gSort dd a").eq(s).html();
+		var id=$("#divGoodsNav .gSort dd a").eq(s).attr('id');
+		$("#divGoodsNav .gSort a:first").html(t+'<s class="arrowUp"></s>');
+		var l=$("#divGoodsNav .current").index(),
+			parm=$("#divGoodsNav li").eq(l).attr('order');
+		if(id){			
+			$("#divGoodsLoading").css('display','block');
+			$(".goodsList ul").remove();
+			glist_json(id+'/'+parm);
+		}else{
+			glist_json("list/"+parm);
+			$(".goodsList ul").remove();
+		}	
+		dl.hide();
+		last.removeClass("gSort");
+		first.removeClass("sOrange");
+	});
+	//加载更多
+	$("#btnLoadMore").click(function(){		
+		var url=$("#urladdress").val(),
+			page=$("#pagenum").val();
+		glist_json(url+'/'+page);
+	});	
+	//返回顶部
+	$(window).scroll(function(){
+		if($(window).scrollTop()>50){
+			$("#btnTop").show();
+		}else{
+			$("#btnTop").hide();
+		}
+	});
+	$("#btnTop").click(function(){
+		$("body").animate({scrollTop:0},10);
+	});
+	//添加到购物车
+	$(document).on("click",'.add',function(){
+		var codeid=$(this).attr('codeid');
+		$.getJSON('{WEB_PATH}/mobile/ajax/addShopCart/'+codeid+'/1',function(data){
+			if(data.code==1){
+				addsuccess('添加失败');
+			}else if(data.code==0){
+				addsuccess('添加成功');				
+			}return false;
+		});
+	});
+	function addsuccess(dat){
+		$("#pageDialogBG .Prompt").text("");
+		var w=($(window).width()-255)/2,
+			h=($(window).height()-45)/2;
+		$("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+		$("#pageDialogBG").stop().fadeIn(1000);
+		$("#pageDialogBG .Prompt").append('<s></s>'+dat);
+		$("#pageDialogBG").fadeOut(1000);
+		//购物车数量
+		$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+			$("#btnCart").append('<em>'+data.num+'</em>');
+			//$("#btnCart1").append('<em>'+data.num+'</em>');
+		});
+	}
+	//跳转页面
+	var gt='.goodsList span,.goodsList h2,.goodsList .Progress-bar';
+	$(document).on('click',gt,function(){
+		var id=$(this).attr('id');
+		if(id){
+			window.location.href="{WEB_PATH}/mobile/mobile/item/"+id;
+		}			
+	});
+
+});
+
+</script>
+	  
+	{wc:templates "mobile/index","footer"}
+    </div>
+  </div>
+</main>
+ <script src="{G_TEMPLATES_JS}/mobile1/main.js"></script> 
+</div>
+   {wc:php:start}
+    $f_home = '';
+    $f_whole = '';
+    $f_jiexiao = '';
+    $f_car = '';
+    $f_personal = '';
+
+    if( ROUTE_C == 'home' || ROUTE_C == 'user' ){
+      $f_personal = 'cur';
+    }else if( ROUTE_C == 'mobile' && ROUTE_A == 'init'){
+      $f_home = 'cur';
+    }else if( ROUTE_C == 'mobile' && ROUTE_A == 'glist'){
+      $f_whole = 'cur';
+    }else if( ROUTE_C == 'mobile' && ROUTE_A == 'lottery'){
+      $f_jiexiao = 'cur';
+    }else if( ROUTE_C == 'shaidan'){
+      $f_car = 'cur';
+    }
+   {wc:php:end}
+  
+  </body>
+</html>
+<style>
+#pageDialogBG{-webkit-border-radius:5px; width:255px;height:45px;color:#fff;font-size:16px;text-align:center;line-height:45px;}
+</style>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>
+
+
+	  <style>
+ .contact-public{
+    position:fixed;
+    right:0px;
+    width:30px;
+    padding:0;
+    line-height:15px;
+    border-radius:5px;
+    background:rgba(255, 222, 173, 1);
+    bottom:70px;
+    text-align:center;
+    color:#fff;
+    z-index:2;
+ }
+.contact-public li{
+   display:block;
+   border-bottom:1px solid #7D7D7D;
+   text-align:center;
+               -webkit-box-sizing:border-box;
+                  -moz-box-sizing:border-box;
+                     -o-box-sizing:border-box;   
+                        box-sizing:border-box;
+}
+.contact-public li:last-child{
+   border-bottom:0;
+   border-top:1px solid #242424;
+}
+.contact-public a{
+   display:block;
+   color:#FD94FC;
+   font-size:16px;
+   text-align:center;
+   padding:6px;
+}
+.contact-public .icon-tel{
+   display:block;
+   margin:0px auto 0 auto;
+   width:25px;
+   height:20px;
+   background:url("http://wfx.91dcw.com/weixin/images/distribution2.png") -200px -820px;
+   background-size:300px 1000px;
+}
+</style>
+<input name="hidLineLink" type="hidden" id="hidLineLink" value="{WEB_PATH}/mobile/mobile" />
+ <script>
+   wx.config({
+     debug: false,
+     appId: "{wc:php:start} echo $wechat['appid'];{wc:php:end}",
+     timestamp: {wc:php:start} echo $signPackage["timestamp"];{wc:php:end},
+     nonceStr: '{wc:php:start} echo $signPackage["nonceStr"];{wc:php:end}',
+     signature: '{wc:php:start} echo $signPackage["signature"];{wc:php:end}',
+   jsApiList: ["checkJsApi", "onMenuShareAppMessage", "onMenuShareTimeline", "onMenuShareWeibo", "onMenuShareQQ"]
+   });
+ wx.ready(function () {
+ var n = $("#hidLineLink").val();
+     wx.onMenuShareTimeline({
+         title: "1元就能购买iphone6哦，快去看看吧！", // 分享标题
+         link: n, // 分享链接
+         imgUrl: "{G_TEMPLATES_STYLE}/images/mobile/iphone6.jpg", // 分享图标
+         success: function () { 
+            alert('已分享');
+         },
+         cancel: function () { 
+             alert('已取消');
+         }
+     });
+     wx.onMenuShareAppMessage({
+         title: "1元就能购买iphone6哦，快去看看吧！", // 分享标题
+         desc: "1元就能购买iphone6哦，快去看看吧！", // 分享描述
+         link: n, // 分享链接
+         imgUrl: "{G_TEMPLATES_STYLE}/images/mobile/iphone6.jpg", // 分享图标
+         type: '', // 分享类型,music、video或link，不填默认为link
+         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+          success: function () { 
+            alert('已分享');
+         },
+         cancel: function () { 
+             alert('已取消');
+         }
+     });
+     wx.onMenuShareQQ({
+         title: "1元就能购买iphone6哦，快去看看吧！", // 分享标题
+         desc: "1元就能购买iphone6哦，快去看看吧！", // 分享描述
+         link: n, // 分享链接
+         imgUrl: "{G_TEMPLATES_STYLE}/images/mobile/iphone6.jpg", // 分享图标
+         success: function () { 
+            // 用户确认分享后执行的回调函数
+         },
+         cancel: function () { 
+            // 用户取消分享后执行的回调函数
+         }
+     });
+     wx.onMenuShareWeibo({
+         title: "1元就能购买iphone6哦，快去看看吧！", // 分享标题
+         desc: "1元就能购买iphone6哦，快去看看吧！", // 分享描述
+         link: n, // 分享链接
+         imgUrl: "{G_TEMPLATES_STYLE}/images/mobile/iphone6.jpg", // 分享图标
+         success: function () { 
+            alert('已分享');
+         },
+         cancel: function () { 
+             alert('已取消');
+         }
+     });
+ });
+ </script>
+ <script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile1/Bottom.js');
+</script>

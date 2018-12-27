@@ -1,0 +1,264 @@
+{wc:templates "index","header"}
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/GoodsList.css"/>
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/header.css"/>
+<script>
+function showh(){
+var height=$("#ddBrandList_brand").innerHeight();	
+	if(height==78){
+		$("#ddBrandList_brand").css("height","auto");
+		$(".list_classMore").addClass("MoreClick");
+		$(".list_classMore").html("收起<i></i>");
+	}else{
+		$("#ddBrandList_brand").css("height","78px");
+		$(".list_classMore").removeClass("MoreClick");
+		$(".list_classMore").html("展开<i></i>");
+	};
+}
+
+$("#m_all_sort").hide();
+$(function(){	
+	$(".list_classMore").click(showh);
+});
+
+$(".m_menu_all").mouseenter(function(){
+$(".m_all_sort").show();
+     })
+$(".m_menu_all").mouseleave(function(){
+$(".m_all_sort").hide();
+     })
+$(".m_all_sort").mouseenter(function(){
+$(this).show();
+     })
+$(".m_all_sort").mouseleave(function(){
+  $(this).hide();
+})
+
+$(function(){
+  $(window).scroll(function() {	
+ 		
+		if($(window).scrollTop()>=130&&$(window).scrollTop()<=560){
+			$(".head_nav").addClass("fixedNav");	
+			$("#m_all_sort").fadeOut();
+		}else if($(window).scrollTop()>560){
+			$(".head_nav").addClass("fixedNav");
+			$("#m_all_sort").fadeOut();
+	} else if($(window).scrollTop()<130){
+			$(".head_nav").removeClass("fixedNav");
+	}
+      });
+});
+
+// $("#_click").find('li').eq(0).addClass('bg_red');
+
+</script>
+
+<style>
+
+.list-block .fail{
+	
+}
+.list-block .fail .main{
+	color:#f00;
+	border: solid 1px #f00;
+	position: absolute;
+	bottom: 50px;
+	width: 200px;
+	background: #fff;
+	border-radius: 3px;
+	left: 50px;
+}
+.list-block .fail .arrow{
+  position: absolute;
+  bottom: 43px;
+  left: 70px;
+}
+.list-block .fail .arrow em{
+  color: #f00;
+  height: 14px;
+  width: 17px;
+  font-family: Simsun;
+  /* font-size: 13px; */
+}
+.list-block .fail .arrow s{
+  position: absolute;
+  top: -3px;
+  left: 0;
+  color: #fff;
+  height: 19px;
+  width: 17px;
+  font-family: Simsun;
+  /* font-size: 16px; */
+}
+.list-block .success .main{
+	color:#009944;
+	border: solid 1px #009944;
+	position: absolute;
+	bottom: 50px;
+	width: 200px;
+	background: #fff;
+	border-radius: 3px;
+	left: 50px;
+}
+.list-block .success .arrow{
+  position: absolute;
+  bottom: 43px;
+  left: 70px;
+}
+.list-block .success .arrow em{
+  color: #009944;
+  height: 14px;
+  width: 17px;
+  font-family: Simsun;
+  /* font-size: 13px; */
+}
+.list-block .success .arrow s{
+  position: absolute;
+  top: -3px;
+  left: 0;
+  color: #fff;
+  height: 19px;
+  width: 17px;
+  font-family: Simsun;
+  /* font-size: 16px; */
+}
+
+
+
+.w_zone{background:url(/statics/templates/mowov9mb1/img/front/goods/ten_03.png) no-repeat;width:63px;height:25px;display:block;line-height:23px;font-size:12px;text-align:center;color:#fff;position:absolute;right:28px;top:250px;}
+</style>
+
+<input type="hidden" id="type" value="10">
+<div class="w_top_nav"></div>
+<div class="w_con_other w_connew_color">
+	<div class="w_con">
+		<div class="announced_dynamic">
+      		<div class="yscroll_list_left" style="margin-top:0px;">
+			
+				{wc:loop $shopqishu $qishu}
+                    {wc:php:start}
+                    	$qishu['q_user'] = unserialize($qishu['q_user']);
+                    {wc:php:end}
+			<li>
+			<p class="yscrollfont"><label>揭晓公告：</label>恭喜<a href="{WEB_PATH}/uname/{wc:fun:idjia($qishu['q_uid'])}">{wc:fun:get_user_name($qishu['q_user'])}</a>获得   (第{wc:$qishu['qishu']}期){wc:$qishu['title']} </p></li>
+			
+						{wc:loop:end}
+			</div>
+      		<a class="w_addlink" href="/goods_lottery">更多&gt;&gt;</a>
+   		</div>
+</br></br><div class="wrap" id="loadingPicBlock">
+	{wc:if $shoplist}
+	<!--商品列表-->
+	<div class="listContent">
+		<ul class="item" id="ulGoodsList">		
+			{wc:loop $shoplist $shop}
+			<li class="goods-iten" >
+				<div class="pic">
+					<a href="{WEB_PATH}/goods/{wc:$shop['id']}" target="_blank" title="{wc:$shop['title']} ">                  	                   	
+						<img alt="{wc:$shop['title']}" src="{G_UPLOAD_PATH}/{wc:$shop['thumb']}">
+					</a>
+					<p name="buyCount" style="display:none;"></p>
+				</div>
+				<p class="name">
+					<a href="{WEB_PATH}/goods/{wc:$shop['id']}" target="_blank" title="{wc:$shop['title']} ">{wc:$shop['title']}</a>
+				</p>
+				<p class="money">价值：<span class="rmbgray">{wc:$shop['money']}</span></p><p class="w_zone">十元专区</p>
+				<div class="Progress-bar">
+					<p title="已完成{wc:fun:percent($shop['canyurenshu'],$shop['zongrenshu'])}"><span style="width:{wc:fun:width($shop['canyurenshu'],$shop['zongrenshu'],260)}px;"></span></p>
+					<ul class="Pro-bar-li">
+						<li class="P-bar01"><em>{wc:$shop['canyurenshu']}</em>已参与人次</li>
+						<li class="P-bar02"><em>{wc:$shop['zongrenshu']}</em>总需人次</li>
+						<li class="P-bar03"><em>{wc:$shop['zongrenshu']-$shop['canyurenshu']}</em>剩余人次</li>
+					</ul>
+				</div>
+				<div class="gl_buybtn">
+					<div class="go_buy">
+						<a href="javascript:;" title="立即购买" class="go_Shoppin fl" onclick="jwebox.goshopnow({wc:$shop['id']},'{WEB_PATH}')">立即{wc:fun:_cfg('web_name_two')}</a>
+					    <a href="javascript:;" onclick="gcartlist.gocartlist({wc:$shop['id']},'{WEB_PATH}','wc_')" class="go_cart fr"  id="car_{wc:$shop['id']}">加入购物车</a>
+					</div>
+				</div>
+			<div class="fail" style="display:none">
+			    <div class="main" style="text-indent:4em">购物车已存在！加入失败</div>
+			</div>
+			<div class="success" style="display:none">
+				<div class="main" style="text-indent:4em">恭喜您,加入购物车成功</div>
+			</div>	
+
+			</li>
+			{wc:loop:end}
+		</ul>
+	{wc:if $total>$num}
+	<!--<div class="pagesx">{wc:page:two}</div>-->
+	{wc:if:end}
+	</div>
+	<!--商品列表完-->
+	{wc:else}
+	<!--未找到商品-->
+	<div class="NoConMsg"><span>无相关商品记录哦~！</span></div>
+	<!--未找到商品-->
+	{wc:if:end}
+	
+</div>
+<script type="text/javascript">
+
+$(function(){
+	$("#ulGoodsList li a.go_cart").click(function(){ 
+		var sw = $("#ulGoodsList li a.go_cart").index(this);
+		var src = $("#ulGoodsList li .pic a img").eq(sw).attr('src');				
+		var $shadow = $('<img id="cart_dh" style="display:none; border:1px solid #aaa; z-index:99999;" width="200" height="200" src="'+src+'" />').prependTo("body");  			
+		var $img = $("#ulGoodsList li .pic").eq(sw);
+		$shadow.css({ 
+			'width' : 200, 
+			'height': 200, 
+			'position' : 'absolute',      
+			"left":$img.offset().left+16, 
+			"top":$img.offset().top+9,
+			'opacity' : 1    
+		}).show();
+		var $cart = $("#btnMyCart");
+		$shadow.animate({   
+			width: 1, 
+			height: 1, 
+			top: $cart.offset().top,    
+			left: $cart.offset().left, 
+			opacity: 0
+		},500,function(){
+			Cartcookie(sw,false);
+		});	
+		
+	});
+	$("#ulGoodsList li a.go_Shopping").click(function(){	
+		var sw = $("#ulGoodsList li a.go_Shopping").index(this);
+
+		Cartcookie(sw,true); 
+	});	
+});
+//存到COOKIE
+function Cartcookie(sw,cook){
+	var shopid = $(".Curbor_id").eq(sw).text(),
+		shenyu = $(".Curbor_yunjiage").eq(sw).text(),
+		money = $(".Curbor_shenyu").eq(sw).text();
+	var Cartlist = $.cookie('Cartlist');
+	if(!Cartlist){
+		var info = {};
+	}else{
+		var info = $.evalJSON(Cartlist);
+	}
+	if(!info[shopid]){
+		var CartTotal=$("#sCartTotal").text();
+			$("#sCartTotal").text(parseInt(CartTotal)+1);
+			$("#btnMyCart em").text(parseInt(CartTotal)+1);
+	}	
+	info[shopid]={};
+	info[shopid]['num']=1;
+	info[shopid]['shenyu']=shenyu;
+	info[shopid]['money']=money;
+	info['MoenyCount']='0.00';
+	$.cookie('Cartlist',$.toJSON(info),{expires:30,path:'/'});
+	if(cook){
+		window.location.href="{WEB_PATH}/member/cart/cartlist";
+	}
+}  
+
+</script>
+
+{wc:templates "index","footer"}

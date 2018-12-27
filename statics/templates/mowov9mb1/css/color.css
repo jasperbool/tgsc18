@@ -1,0 +1,180 @@
+@charset "utf-8";
+/* CSS Document */
+/*border*/
+.b_red{border:solid 1px #D3D3D3; border-radius:50px;}
+.br_red{border-right:solid 1px #D80000;}
+.b_gray{border: 1px solid #DFDFDF;}
+.bt_gray{border-top:solid 1px #DFDFDF}
+.bb_gray{border-bottom:solid 0px #DFDFDF}
+.br_gray{border-right:solid 1px #DFDFDF}
+.bl_gray{border-left:solid 1px #DFDFDF}
+.bb_eee{border-bottom:solid 1px #eee;}
+.b_pink{border:Solid 1px #D7D7D7;}
+.R-grtit h3{border-bottom:1px solid #D80000;}
+.button05{border:1px solid #D80000;}
+
+.b2_red{border:solid 2px #D80000;}
+.bt2_red{border-top:solid 2px #D80000;}
+.bt2_green{border-top:solid 2px #D80000;}
+.bt2_orange{border-top:solid 2px #D80000;}
+.bt_red{border-top:solid 1px #D80000}
+.bb2_red{border-bottom:solid 2px #D80000}
+.b_red1{border:solid 1px #C40000;}
+.b_red2{border: 1px solid #eed7d9;}
+.bb_pink{border-bottom: 1px solid #F9D8DD;}
+.button07{background:#D80000;border:1px solid #D80000;}
+.groups-head{border:1px solid #E9E9E9;border-top:1px solid #D80000;}
+.Topic-tab li.tabcur {border:1px solid #D80000;}
+.Topic-tab{border-bottom:1px solid #D80000;}
+/*background*/
+.bg_red{background: #D80000;}
+.bg_pink{background: #FFF;}
+.bg_yellow{background: #FFF60E;border: 1px solid #FFF60E;}
+.text_tel .orangebut{background:#D80000;}
+.text_email .orangebut{background:#D80000;}
+.button05{background:#D80000;}
+
+/*color*/
+.c_red{color: #D80000;border-radius:50px;}
+.c_black{color:#000;}
+.c_yellow{color:#FF9600;}
+.c_green{color:#D80000;}
+.c_orange{color:#D80000}
+.c_gray{color:#bbb;}
+.rmb{color:#f00}
+.m-joinNum span.tnum {color:#D80000}
+.blue{color:#C40000}
+.gray01 {color: #666;}
+.gray02 {color: #999;}
+.gray03 {color: #bbb;}
+.bluebut{background: #D80000;border: 1px solid #D80000;}
+.login_Email_but{background: #D80000;border: 1px solid #D80000;}
+.m-ser #pServerTime{background: #D80000;color: #fff;padding: 5px;border-radius: 50px;}
+
+
+
+/*hover*/
+a:hover{color:#d80000}
+.m_all_sort ul li:hover{border:solid 1px #D80000}
+.m_all_sort ul li a:hover{color:#D80000}
+.m_all_sort a.more:hover{border:solid 1px #D80000;color:#D80000;}
+.head_nav .nav_list li a:hover{background:#fff;color:#D80000;}
+.num a:hover{background:#D80000}
+.m_newsML a:hover{color:#D80000}
+.prin_pp ul li:hover{border-top:solid 1px #D80000;}
+.goods_hotR ul li .shop_buttom a:hover{background:#C40000}
+.get_ready ul li .shop_buttom a:hover{background:#C40000}
+.hot_list .list-block:hover,.get_ready .list-block:hover{border:solid 1px #D80000;
+height: 390.5px;
+height:386px\9;
+z-index: 99;
+margin: -1px -1px 0 0;
+position: relative;
+}
+.catalog .fr a:hover {
+border: solid 1px #D80000;
+color:#D80000;
+text-decoration: none;
+}
+.head_top ul li a:hover{color:#D80000}
+.get_ready .list-block:hover{
+border:solid 1px #D80000;
+height: 430px;
+z-index: 99;
+margin: -1px -1px 0 0;
+position: relative;
+}
+
+.get_ready .list-blocka:hover{
+border:solid 1px #D80000;
+height: 345px;
+z-index: 99;
+margin: -1px -1px 0 0;
+position: relative;
+}
+.new_goods .list-block:hover{
+border:solid 1px #D80000;
+height: 300px;
+z-index: 99;
+margin: -1px -1px 0 0;
+position: relative;
+}
+.new_goods .check_out a:hover{color:#D80000;}
+.lottery_show .check_out a:hover{color:#D80000;}
+.singleR a p:hover{color:#D80000;}
+.topicAllL ul.column li h1:hover,.topicAllL ul.column li a:hover{color:#D80000}
+.topicAllL ul.columns .idea a:hover{background:#D80000;color:#fff}
+.g-guide dd a:hover {
+color: #D80000;
+text-decoration: underline;
+}
+.list_class dd a:hover {
+color: #D80000;
+}
+.list_Sort dd a:hover {
+color: #D80000;
+border:Solid 1px #D80000;
+}
+#Page_Ul li a:hover {
+background: #D80000;
+border: 1px solid #D80000;
+color: #FFF;
+text-decoration: none;
+display: block;
+}
+.show_Period .Period_list li a:hover {color: #D80000;}
+.Det_button .Det_Shopbut:hover,.My_RecordReg a.My_Signbut:hover {
+background: #C40000;
+color: #fff;
+text-decoration: none;
+}
+.Det_button .Det_Cart:hover,.w-goods-ing .shop_buttom1 a:hover{
+background: #D80000;
+color: #FFF;
+text-decoration: none;
+}
+.My_RecordReg a.My_Regbut:hover {background:#14A1F9;text-decoration:none;}
+.jcarousel-clip ul li:hover{border:Solid 1px #D80000}
+.Result_LConduct .Result_LConductBut:hover{background:#C40000}
+.share-Conduct .getbut-a:hover{background:#D80000;color:#fff}
+.autoOld .autoOldMore a:hover ,.autoOld li.pInfo dt.title a:hover {color: #D80000;}
+.publishCen li.Cursor:hover {border: solid 1px #D80000;}
+.details .details-A:hover {text-decoration: none;background: #D80000;color:#fff;}
+.autoOld ul.autoOldlist:hover{transition: all 0.8s;border:solid 1px #D80000;}
+.m_app ul li a:hover{color:#D80000;}
+.button07:hover{background:#EF5C74;}
+.text_tel .orangebut:hover{background:#D80000}
+.text_email .orangebut:hover{background:#D80000;}
+.login_Email_but:hover{background:#D80000}
+.bg_pink .bluebut:hover{color:#fff;background:#D80000;}
+.message .much i:hover{background-position:0px -84px;}
+.message .smile i:hover{background-position:0px -30px;}
+.message .smile:hover{color:#D80000;cursor:pointer;}
+.much a:hover{color:#D80000;}
+.button05:hover{background:#D80000;}
+
+.last li a:hover{
+	background: #C40000;
+	color:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
