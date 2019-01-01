@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php defined('G_IN_SYSTEM')or exit('No permission resources.'); ?><!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,13 +7,13 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
-    <link href="{G_TEMPLATES_CSS}/mobile/password.css" rel="stylesheet" type="text/css" />
-    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
-    <link rel="stylesheet" href="{G_TEMPLATES_CSS}/news/layui/css/layui.css" id="layuicss-layer">
- <!--   <link rel="stylesheet" href="{G_TEMPLATES_CSS}/news/switchery.css" id="layuicss-layer">-->
-    <link href="{G_TEMPLATES_CSS}/switchery.css" rel="stylesheet">
-    <script src="{G_TEMPLATES_JS}/switchery.js"></script>
+    <link href="<?php echo G_TEMPLATES_CSS; ?>/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+    <link href="<?php echo G_TEMPLATES_CSS; ?>/mobile/password.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo G_TEMPLATES_JS; ?>/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?php echo G_TEMPLATES_CSS; ?>/news/layui/css/layui.css" id="layuicss-layer">
+ <!--   <link rel="stylesheet" href="<?php echo G_TEMPLATES_CSS; ?>/news/switchery.css" id="layuicss-layer">-->
+    <link href="<?php echo G_TEMPLATES_CSS; ?>/switchery.css" rel="stylesheet">
+    <script src="<?php echo G_TEMPLATES_JS; ?>/switchery.js"></script>
 </head>
  <style type="text/css">
  * {
@@ -267,15 +267,15 @@ h1,h2,h3,h4,h5,b {
 <!-- 内页顶部 -->
   <body class="index-mem">
     <div class="sub_nav marginB">
-      <a href="{WEB_PATH}/mobile/user/nickname" class="always-set">昵称
+      <a href="<?php echo WEB_PATH; ?>/mobile/user/nickname" class="always-set">昵称
         <i></i>
-        <span class="sub_nav_content">{wc:fun:get_user_name($member['uid'])}</span></a>
-      <a href="{WEB_PATH}/mobile/user/headimg" class="always-set file">头像
+        <span class="sub_nav_content"><?php echo get_user_name($member['uid']); ?></span></a>
+      <a href="<?php echo WEB_PATH; ?>/mobile/user/headimg" class="always-set file">头像
         <i></i>
         <span>
-          <img id="userimg" src="{G_UPLOAD_PATH}/{wc:fun:get_user_key($member['uid'],'img')}" border="0/"></span>
+          <img id="userimg" src="<?php echo G_UPLOAD_PATH; ?>/<?php echo get_user_key($member['uid'],'img'); ?>" border="0/"></span>
         <!-- <input type="file" name="files[]" id="touimg"> --></a>
-      <a href="{WEB_PATH}/mobile/user/password" class="always-set">修改密码</a>
+      <a href="<?php echo WEB_PATH; ?>/mobile/user/password" class="always-set">修改密码</a>
       <a href="#" class="always-set">修改安全密码</a></div>
     <div class="sub_nav marginB">
       <a target="#secret_node" role="tab" class="always-set">隐私设置
@@ -286,26 +286,26 @@ h1,h2,h3,h4,h5,b {
         	
           <div class="ios-switch" id="iosSwitchOne">
             <label class="sub_nav_content" >所有人可见</label>
-            {wc:php:start}
+            <?php 
               if($member['is_xgjl'] == 1){
                 echo '<input class="js-switch" type="checkbox" checked id="ios-switch1">';
               }else{
                 echo '<input class="js-switch" type="checkbox" id="ios-switch1">';
               }
-            {wc:php:end}
+             ?>
            
           </div>
         </a>
         <a>获得商品
           <div class="ios-switch" id="iosSwitchtwo">
             <label class="sub_nav_content" >所有人可见</label>
-              {wc:php:start}
+              <?php 
                   if($member['is_hdsp'] == 1){
                     echo '<input  class="js-switch" type="checkbox" id="ios-switch2" checked  data-switchery="true" >';
                   }else{
                     echo '<input  class="js-switch" type="checkbox" id="ios-switch2"  data-switchery="true" >';
                   }
-              {wc:php:end}
+               ?>
 
           </div>
         </a>
@@ -318,7 +318,7 @@ h1,h2,h3,h4,h5,b {
         <!--</a>-->
       </div>
       <div class="useroutm">
-        <a id="btnLogout" href="{WEB_PATH}/mobile/user/cook_end">退出登录</a></div>
+        <a id="btnLogout" href="<?php echo WEB_PATH; ?>/mobile/user/cook_end">退出登录</a></div>
     </div>
 	
 	
@@ -425,7 +425,7 @@ h1,h2,h3,h4,h5,b {
         </div>
         <h2>资料修改</h2>
         <div class="head-r">
-	        <a href="{WEB_PATH}/mobile/mobile" class="z-Home"></a>
+	        <a href="<?php echo WEB_PATH; ?>/mobile/mobile" class="z-Home"></a>
         </div>
     </header>
 <div class="main-content clearfix">
@@ -442,10 +442,10 @@ h1,h2,h3,h4,h5,b {
 <span style="border: none;height: 34px;width: 50px;background-position: 0 -25px;position: absolute;top: 12px;left: 5px;">签名：</span>
 </li>
 <li>
-    <p>绑定QQ登录：&nbsp;&nbsp;{wc:if $qqinfo['b_code']}已经绑定！ {wc:else}<a href="{WEB_PATH}/api/qqlogin">点击去绑定</a> {wc:if:end}</</p>
+    <p>绑定QQ登录：&nbsp;&nbsp;<?php if($qqinfo['b_code']): ?>已经绑定！ <?php  else: ?><a href="<?php echo WEB_PATH; ?>/api/qqlogin">点击去绑定</a> <?php endif; ?></</p>
 </li>
 <li>
-    <p>绑定微信登录：&nbsp;&nbsp;{wc:if $wxinfo['b_code']}已经绑定！{wc:else}<a href="{WEB_PATH}/mobile/user/wxinit">点击去绑定</a> {wc:if:end}</p>
+    <p>绑定微信登录：&nbsp;&nbsp;<?php if($wxinfo['b_code']): ?>已经绑定！<?php  else: ?><a href="<?php echo WEB_PATH; ?>/mobile/user/wxinit">点击去绑定</a> <?php endif; ?></p>
 </li>
 <li>
     <p>提示：(请在微信里面进行绑定，如在微信端外会报错哦！)</p>
@@ -481,10 +481,10 @@ return false;
 }
 var the = $(this).text('正在提交');
 submiting = true;
-$.post("{WEB_PATH}/mobile/user/profilechange",post,function(s){
+$.post("<?php echo WEB_PATH; ?>/mobile/user/profilechange",post,function(s){
 if (s==1) {
 $.PageDialog.ok('保存成功！', function(){
-window.location.href="{WEB_PATH}/mobile/home";
+window.location.href="<?php echo WEB_PATH; ?>/mobile/home";
 });
 } else {
 submiting = false;
@@ -502,16 +502,16 @@ Base.getScript(Path.Skin + "/js/mobile/Comm.js", a);
 </script>
 
 </div>
-{wc:templates "mobile/index","footer"}
+<?php include templates("mobile/index","footer");?>
 <script language="javascript" type="text/javascript">
   var Path = new Object();
-  Path.Skin="{G_TEMPLATES_STYLE}";  
-  Path.Webpath = "{WEB_PATH}";
-  Path.imgpath = "{G_WEB_PATH}/statics";
+  Path.Skin="<?php echo G_TEMPLATES_STYLE; ?>";  
+  Path.Webpath = "<?php echo WEB_PATH; ?>";
+  Path.imgpath = "<?php echo G_WEB_PATH; ?>/statics";
   
 var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
 function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
-Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+Base.getScript('<?php echo G_TEMPLATES_JS; ?>/mobile/Bottom.js?v='+GetVerNum());
 </script>
  
 </div>

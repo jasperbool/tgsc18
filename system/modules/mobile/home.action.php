@@ -352,7 +352,7 @@ public function invite(){
 
 			  }else{
 
-				$xfsum+=$val['money'];		  
+				$xfsum+=$val['money'];
 
 			  }		
 

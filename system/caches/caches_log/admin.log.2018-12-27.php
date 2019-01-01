@@ -40,3 +40,15 @@
 
 
 
+2018-12-27 14:39:58------>array (
+  0 => 'UPDATE `go_pay` SET `pay_name` = \'盈付宝支付宝（免签约支付）\',`pay_thumb` = \'photo/shoukuanlaImg/tenmobie.jpg\',`pay_type` = \'0\',`pay_des` = \'支付宝转账支付，免签约支付软件辅助实现自动充值\',`pay_start` = \'0\',`pay_key` = \'a:2:{s:2:"id";a:2:{s:4:"name";s:9:"商户号";s:3:"val";s:5:"10026";}s:3:"key";a:2:{s:4:"name";s:6:"密匙";s:3:"val";s:32:"7x2fmpidig3hqvqo1baq28na20w4z4i1";}}\' where `pay_id` = \'31\'',
+) 
+
+
+
+2018-12-27 16:18:25------>array (
+  0 => 'UPDATE `go_pay` SET `pay_name` = \'盈付宝支付宝（免签约支付）\',`pay_thumb` = \'photo/shoukuanlaImg/tenmobie.jpg\',`pay_type` = \'0\',`pay_des` = \'支付宝转账支付，免签约支付软件辅助实现自动充值\',`pay_start` = \'1\',`pay_key` = \'a:2:{s:2:"id";a:2:{s:4:"name";s:9:"商户号";s:3:"val";s:5:"10026";}s:3:"key";a:2:{s:4:"name";s:6:"密匙";s:3:"val";s:32:"7x2fmpidig3hqvqo1baq28na20w4z4i1";}}\' where `pay_id` = \'31\'',
+) 
+
+
+

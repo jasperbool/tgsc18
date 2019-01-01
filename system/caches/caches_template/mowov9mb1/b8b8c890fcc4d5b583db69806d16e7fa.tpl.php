@@ -164,7 +164,7 @@ a[title='站长统计']{
    <div class="u-ft-nav">
         <ul>
             <li class="f_home"><a href="<?php echo WEB_PATH; ?>" class="<?php echo $f_home; ?>"><i class="foot_1"></i>首页</a></li>
-            <li class="f_allgoods"><a href="<?php echo WEB_PATH; ?>/mobile/mobile/glist"  class="<?php echo $f_whole; ?>"><i class="foot_2"></i>所有商品</a></li>
+            <li class="f_allgoods"><a href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/0/s30/1"  class="<?php echo $f_whole; ?>"><i class="foot_2"></i>所有商品</a></li>
             <li class="f_announced"><a href="<?php echo WEB_PATH; ?>/mobile/mobile/lottery"  class="<?php echo $f_jiexiao; ?>"><i class="foot_3"></i>最新揭晓</a></li>
             <li class="f_car"><a  href="<?php echo WEB_PATH; ?>/mobile/cart/cartlist"  class="<?php echo $f_car; ?>"><i class="foot_4" id="btnCart"></i>购物车</a></li>
             <li class="f_personal"><a href="<?php echo WEB_PATH; ?>/mobile/user/login" id="btnUser"  class="<?php echo $f_personal; ?>"><i class="foot_5"></i>我的<?php echo _cfg('web_name_two'); ?></a></li>

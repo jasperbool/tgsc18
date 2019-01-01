@@ -896,10 +896,10 @@ li.ptn a span {
             </section>
             
             <div class="navigation">
-                <a class="one" href="<?php echo WEB_PATH; ?>/mobile/home/invite">
+                <a class="one" style="border-left: 10px solid #f6f6f6;" href="<?php echo WEB_PATH; ?>/mobile/lottery">
                     <img src="/statics/templates/mowov9mb1/img/jifen.jpg">
                 </a>
-                <a class="one" style="border-left: 4px solid #f6f6f6;" href="<?php echo WEB_PATH; ?>/mobile/lottery">
+                <a class="one" style="border-left: 10px solid #f6f6f6;" href="<?php echo WEB_PATH; ?>/mobile/home/invite" >
                     <img src="/statics/templates/mowov9mb1/img/yaoqing.jpg">
                 </a>
             </div>
@@ -1136,7 +1136,7 @@ $(document).ready(function(){
 		$("#divGoodsLoading").css('display','block');
 		$(".goodsList ul").remove();
        // console.log(parm);
-		var glist=glist_json("list/sdda/"+parm);
+		var glist=glist_json("0/s"+parm+"/1");
 	});
 	
 	//商品分类

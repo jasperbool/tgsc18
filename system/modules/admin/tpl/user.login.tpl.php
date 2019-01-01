@@ -78,7 +78,7 @@
 
 
 <div class="copyright lh30" style="padding-top:30%;"
-    <a href="http://www.yunniupin.com" target="_blank">版权所有：泰广商城云购管理系统 © Copyright 2018-2020 tgsc18.com All rights reserved.</a>
+    <a href="http://m.tgsc18.com" target="_blank">版权所有：泰广商城管理系统 © Copyright 2018-2020 tgsc18.com All rights reserved.</a>
 </div>
 
 

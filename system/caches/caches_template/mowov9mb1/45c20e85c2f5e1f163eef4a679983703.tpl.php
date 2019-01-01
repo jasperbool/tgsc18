@@ -14,6 +14,7 @@
 <link rel="stylesheet" media="screen,projection,tv" href="<?php echo G_TEMPLATES_CSS; ?>/mobile2/header_footer.css">
 <link rel="stylesheet" media="screen,projection,tv" href="<?php echo G_TEMPLATES_CSS; ?>/mobile2/main.css">
 <script src="<?php echo G_TEMPLATES_JS; ?>/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script src="<?php echo G_TEMPLATES_JS; ?>/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
 
 <link href="<?php echo G_TEMPLATES_CSS; ?>/news/comm.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo G_TEMPLATES_CSS; ?>/news/goods.css" rel="stylesheet" type="text/css" />
@@ -167,7 +168,7 @@
       <ul class="sort_list"> 
        <a href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/10">
         <li sortid="0">
-                <a style="color:#f60" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist">全部商品</a>
+                <a style="color:#f60" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/0/s30/1">全部商品</a>
                 <input id="chk0" class="cateChk" type="checkbox" name="0" value="0">
                 <label for="chk0"></label>
             </li>
@@ -176,7 +177,7 @@
             <?php $ln=1;if(is_array($data)) foreach($data AS $categoryx): ?>
             <a href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/<?php echo $categoryx['cateid']; ?>">
              <li sortid="<?php echo $categoryx['cateid']; ?>">
-                <a href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/<?php echo $categoryx['cateid']; ?>"><?php echo $categoryx['name']; ?></a>
+                <a href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/<?php echo $categoryx['cateid']; ?>/s30/1"><?php echo $categoryx['name']; ?></a>
                 <input id="chk<?php echo $categoryx['cateid']; ?>" class="cateChk" type="checkbox" name="<?php echo $categoryx['cateid']; ?>" value="<?php echo $categoryx['cateid']; ?>">
                 <label for="chk17"></label>
             </li>
@@ -193,10 +194,10 @@
      </div> 
      <div id="selectOrder" class="select-total" style="display: none;"> 
       <ul class="order_list"> 
-       <li order="s10"><a id="s10" style="color: #f60" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/s10">即将揭晓</a></li> 
-       <li order="s20"><a id="s20" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/s20">人气</a></li><!--  class="current" -->
-       <li order="s30"><a id="s30" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/s30">最新</a></li> 
-       <li order="s50"><a id="s50" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/s50">价格</a></li> 
+       <li order="s10"><a id="s10" style="color: #f60" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/0/s10/1">即将揭晓</a></li>
+       <li order="s20"><a id="s20" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/0/s20/1">人气</a></li><!--  class="current" -->
+       <li order="s30"><a id="s30" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/0/s30/1">最新</a></li>
+       <li order="s50"><a id="s50" href="<?php echo WEB_PATH; ?>/mobile/mobile/glist/0/s50/1">价格</a></li>
       </ul> 
      </div> 
     </nav> 
@@ -281,30 +282,31 @@ $(function(){
 	var site = url.lastIndexOf("\/");
     //截取最后一个/后的值
     zhis = '';
-    zhis = url.substring(site + 1, url.length);
+    zhis = url.substring(site + 2, url.length);
    
 })
 //打开页面加载数据
 window.onload=function(){
-	//alert(zhis);
+    parm = "<?php echo $param_arr; ?>";
+    var fg=parm.split("/");
 	if(zhis == 's10'){
 		$("#s10").css("color","#f60");
-		glist_json("list/dss/10");
+        glist_json(fg[0]+'/'+'s10'+'/1');
 	}
 	if(zhis == 's20'){
 		$("#s20").css("color","#f60");
-		glist_json("list/dss/20");
+        glist_json(fg[0]+'/'+'s20'+'/1');
 	}
 	if(zhis == 's30'){
 		$("#s30").css("color","#f60");
-		glist_json("list/dss/30");
+        glist_json(fg[0]+'/'+'s30'+'/1');
 	}
 	if(zhis == 's50'){
 		$("#s50").css("color","#f60");
-		glist_json("list/dss/50");
+        glist_json(fg[0]+'/'+'s50'+'/1');
 	}
 	if(zhis !== 's10' || zhis !== 's20' || zhis !== 's30'||zhis !== 's50'){
-		glist_json("list/"+zhis);
+        glist_json(fg[0]+'/'+fg[1]+'/1');
 	}
 	
 	//购物车数量
@@ -332,7 +334,7 @@ function gnamelist_json(parm){
 			//alert(fg);
 			//$("#urladdress").val(fg[0]+'/'+fg[1]);
 			//$("#pagenum").val(data[0].page);
-			for(var i=0;i<data.length;i++){			
+			for(var i=0;i<data.length;i++){
 			var ul='<ul>';
 			    ul+='<div class="c_classfix_goods_out">';
 				ul+='<div class="c_img_goods">';
@@ -368,44 +370,80 @@ function gnamelist_json(parm){
 	});
 }
 
-function glist_json(parm){
-	$("#urladdress").val('');
-	$("#pagenum").val('');
-	$.getJSON('<?php echo WEB_PATH; ?>/mobile/mobile/glistajax/'+parm,function(data){
-		$("#divGoodsLoading").css('display','none');		
-		if(data[0].sum){
-			var fg=parm.split("/");
-			$("#urladdress").val(fg[0]+'/'+fg[1]);
-			$("#pagenum").val(data[0].page);
-			for(var i=0;i<data.length;i++){	
-				var ul = '<ul id="'+data[i].id+'">';
-				ul += '<li><span class="z-Limg"><a href="<?php echo WEB_PATH; ?>/mobile/mobile/item/'+data[i].id+'"><img style="cursor: pointer" src="<?php echo G_UPLOAD_PATH; ?>/'+data[i].thumb+'" width="100px" height="100px"/></a><em class="cat-lottery_b"></em></span>';
-				ul +='<div class="goodsListR" style="float: none;"><h2>'+data[i].title+'</h2>';
-				ul +='<p class="price">价值：<em class="arial gray">￥'+data[i].money+'</em></p><div class="pRate"><div class="Progress-bar">';
-      			ul +='<p class="u-progress" style="margin-bottom:0px;"><span class="pgbar" style="width:'+data[i].zongrenshu/data[i].shenyurenshu+'%;"><span class="pging"></span></span></p><ul class="Pro-bar-li">';
-      			ul +='<li class="P-bar01"><em>'+data[i].canyurenshu+'</em>已参与</li><li class="P-bar02"><em>'+data[i].zongrenshu+'</em>总需人次</li><li class="P-bar03"><em>'+data[i].shenyurenshu+'</em>剩余</li></ul> </div><a class="add " codeid="'+data[i].id+'" href="javascript:;"><s></s></a></div></div></li></ul>';
-      			$("#locadings").before(ul);
-      			//$.parser.parse("#indexgoodList");
-         		
-			}
-
-			if(data[0].page<=data[0].sum){
-				$("#btnLoadMore").css('display','block');
-				$("#btnLoadMore2").css('display','none');
-				$("#btnLoadMore3").css('display','none');
-			}else if(data[0].page>data[0].sum){
-				$("#btnLoadMore").css('display','none');
-				$("#btnLoadMore2").css('display','none');
-				$("#btnLoadMore3").css('display','block');
-			}
-		}else{
-			$("#btnLoadMore").css('display','none');
-			$("#btnLoadMore2").css('display','block');	
-			$("#btnLoadMore3").css('display','none');			
-		}
-	});
-}
 $(document).ready(function(){
+    var isbool=true;
+
+    function glist_json(parm){
+        // alert(parm);
+        // $("#urladdress").val('');
+        // $("#pagenum").val('');
+        var nowPage = $("#pagenum").val();
+        $.getJSON('<?php echo WEB_PATH; ?>/mobile/mobile/glistajax/'+parm,function(data){
+            $("#divGoodsLoading").css('display','none');
+            // console.log(data[0].page);
+            if(data[0].sum){
+                if(nowPage > data[0].sum){
+                    $.PageDialog.fail('没有更多数据');
+                    return false;
+                }
+                var fg=parm.split("/");
+                $("#urladdress").val(fg[0]+'/'+fg[1]+'/'+data[0].page);
+                // console.log(fg[0]+'/'+fg[1]+'/'+data[0].page);
+                $("#pagenum").val(data[0].page);
+                // console.log(data[0].sum);
+                for(var i=0;i<data.length;i++){
+                    // console.log((data[i].canyurenshu / data[i].zongrenshu)*100+'%');
+                    var ul = '<ul id="'+data[i].id+'">';
+                    ul += '<li><span class="z-Limg"><a href="<?php echo WEB_PATH; ?>/mobile/mobile/item/'+data[i].id+'"><img style="cursor: pointer" src="<?php echo G_UPLOAD_PATH; ?>/'+data[i].thumb+'" width="100px" height="100px"/></a><em class="cat-lottery_b"></em></span>';
+                    ul +='<div class="goodsListR" style="float: none;"><h2>'+data[i].title+'</h2>';
+                    ul +='<p class="price">价值：<em class="arial gray">￥'+data[i].money+'</em></p><div class="pRate"><div class="Progress-bar">';
+                    ul +='<p class="u-progress" style="margin-bottom:0px;"><span class="pgbar" style="width:'+(data[i].canyurenshu/data[i].zongrenshu)*100+'%;"><span class="pging"></span></span></p><ul class="Pro-bar-li">';
+                    ul +='<li class="P-bar01"><em>'+data[i].canyurenshu+'</em>已参与</li><li class="P-bar02"><em>'+data[i].zongrenshu+'</em>总需人次</li><li class="P-bar03"><em>'+data[i].shenyurenshu+'</em>剩余</li></ul> </div><a class="add " codeid="'+data[i].id+'" href="javascript:;"><s></s></a></div></div></li></ul>';
+                    $("#locadings").before(ul);
+                    //$.parser.parse("#indexgoodList");
+
+                }
+                isbool=true;
+
+                if(data[0].page<=data[0].sum){
+                    $("#btnLoadMore").css('display','block');
+                    $("#btnLoadMore2").css('display','none');
+                    $("#btnLoadMore3").css('display','none');
+                }else if(data[0].page>data[0].sum){
+                    $("#btnLoadMore").css('display','none');
+                    $("#btnLoadMore2").css('display','none');
+                    $("#btnLoadMore3").css('display','block');
+                }
+            }else{
+                $("#btnLoadMore").css('display','none');
+                $("#btnLoadMore2").css('display','block');
+                $("#btnLoadMore3").css('display','none');
+            }
+        });
+    }
+
+    parm = "<?php echo $param_arr; ?>";
+    var fg=parm.split("/");
+    if(zhis == 's10'){
+        $("#s10").css("color","#f60");
+        glist_json(fg[0]+'/'+'s10'+'/1');
+    }
+    if(zhis == 's20'){
+        $("#s20").css("color","#f60");
+        glist_json(fg[0]+'/'+'s20'+'/1');
+    }
+    if(zhis == 's30'){
+        $("#s30").css("color","#f60");
+        glist_json(fg[0]+'/'+'s30'+'/1');
+    }
+    if(zhis == 's50'){
+        $("#s50").css("color","#f60");
+        glist_json(fg[0]+'/'+'s50'+'/1');
+    }
+    if(zhis !== 's10' || zhis !== 's20' || zhis !== 's30'||zhis !== 's50'){
+        glist_json(fg[0]+'/'+fg[1]+'/1');
+    }
+
 	//即将揭晓,人气,最新,价格	
 	$("#divGoodsNav li:not(:last)").click(function(){
 		var l=$(this).index();
@@ -413,7 +451,7 @@ $(document).ready(function(){
 		var parm=$("#divGoodsNav li").eq(l).attr('order');
 		$("#divGoodsLoading").css('display','block');
 		$(".goodsList ul").remove();
-		var glist=glist_json("list/"+parm);
+		// var glist=glist_json("list/"+parm);
 	});
 	
 	//商品分类
@@ -441,9 +479,9 @@ $(document).ready(function(){
 		if(id){			
 			$("#divGoodsLoading").css('display','block');
 			$(".goodsList ul").remove();
-			glist_json(id+'/'+parm);
+			// glist_json(id+'/'+parm);
 		}else{
-			glist_json("list/"+parm);
+			// glist_json("list/"+parm);
 			$(".goodsList ul").remove();
 		}	
 		dl.hide();
@@ -460,9 +498,9 @@ $(document).ready(function(){
 			parm=$("#Nav li").eq(l).attr('order');
 		if(id){			
 			$(".goodsList ul").remove();
-			glist_json(id+'/'+parm);
+			// glist_json(id+'/'+parm);
 		}else{
-			glist_json("list/"+parm);
+			// glist_json("list/"+parm);
 			$(".goodsList ul").remove();
 		}	
 
@@ -471,13 +509,26 @@ $(document).ready(function(){
 	});
 	
     //自动加载更多
-                $(window).scroll(function() {
-                    if ($(document).height() - $(this).scrollTop() - $(this).height() < 1 && $('#btnLoadMore').css('display') != 'none') {
-                        var url = $("#urladdress").val(),
-                            page = $("#pagenum").val();
-                        glist_json(url + '/' + page);
-                    }
-                });
+    $(window).scroll(function() {
+
+        if ($(document).scrollTop() + $(window).height() > $(document).height() - 100 && isbool==true ) {
+            isbool=false;
+            var url = $("#urladdress").val();
+            //         // page = $("#pagenum").val();
+            //     alert(url);
+                glist_json(url);
+        }
+
+
+        // if ($(document).height() - $(this).scrollTop() - $(this).height() < 1
+        //     && $('#btnLoadMore').css('display')!='none' && isbool==true ){
+        //     isbool=false;
+        //     var url = $("#urladdress").val();
+        //         // page=$("#pagenum").val();
+        //     glist_json(url);
+        // }
+    });
+
 
 	//返回顶部
 	$(window).scroll(function(){
@@ -497,7 +548,7 @@ $(document).ready(function(){
 			if(data.code==1){
 				addsuccess('添加失败');
 			}else if(data.code==0){
-				addsuccess('添加成功1');				
+				addsuccess('添加成功');
 			}return false;
 		});
 	});

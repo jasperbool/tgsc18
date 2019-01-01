@@ -455,4 +455,22 @@ public function profile_one(){
         die();
     }
 
+    // 修改昵称页面
+    public function nickname()
+    {
+        $mysql_model=System::load_sys_class('model');
+        $member=$this->userinfo;
+        include templates("/mobile/user","nickname");
+    }
+
+    public function changeNickname()
+    {
+        $mysql_model=System::load_sys_class('model');
+        $member=$this->userinfo;
+        $nickname = $_REQUEST['nickname'];
+        $this->db->Query("UPDATE `@#_member` SET `username` = '".$nickname."' where `uid`='$member[uid]'");
+        echo json_encode(['status' => 1, 'message' => '修改成功']);
+        die();
+    }
+
 }

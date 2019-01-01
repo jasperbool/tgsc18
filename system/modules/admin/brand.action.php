@@ -31,7 +31,7 @@ class brand extends admin {
 
 	//品牌管理入库
 	public function insert(){
-		$categorys=$this->db->GetList("SELECT * FROM `@#_category` WHERE 1 order by `parentid` ASC,`cateid` ASC",array('key'=>'cateid'));
+		$categorys=$this->db->GetList("SELECT * FROM `@#_category` WHERE `model` = 1 order by `parentid` ASC,`cateid` ASC",array('key'=>'cateid'));
 		$tree=System::load_sys_class('tree');
 		$tree->icon = array('│ ','├─ ','└─ ');
 		$tree->nbsp = '&nbsp;';
@@ -60,7 +60,7 @@ class brand extends admin {
 		$brandid=intval($this->segment(4));		
 		$brands=$this->db()->Getone("select * from `@#_brand` where id='$brandid'");
 		if(!$brands)_message("参数错误!");
-		$categorys=$this->db->GetList("SELECT * FROM `@#_category` WHERE 1 order by `parentid` ASC,`cateid` ASC",array('key'=>'cateid'));
+		$categorys=$this->db->GetList("SELECT * FROM `@#_category` WHERE `model` = 1 order by `parentid` ASC,`cateid` ASC",array('key'=>'cateid'));
 		$tree=System::load_sys_class('tree');
 		$tree->icon = array('│ ','├─ ','└─ ');
 		$tree->nbsp = '&nbsp;';

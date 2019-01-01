@@ -137,6 +137,15 @@ class mobile extends base {
 		}else{
 			$key="全部商品";
 		}
+
+		$paramarr = [
+//            htmlspecialchars($this->segment(3)),
+            htmlspecialchars($this->segment(4)),
+            htmlspecialchars($this->segment(5)),
+            htmlspecialchars($this->segment(6))
+        ];
+		$param_arr = implode('/', $paramarr);
+
 		include templates("mobile/index","glist");
 	}
 		//shiyuan
@@ -216,9 +225,10 @@ class mobile extends base {
 	public function glistajax(){
 	    $webname=$this->_cfg['web_name'];
 	   // var_dump($this->segment(5));die;
-		$cate_band =htmlspecialchars($this->segment(5));
-		$select =htmlspecialchars($this->segment(6));
-		$p =htmlspecialchars($this->segment(7)) ? $this->segment(7) :1;
+		$cate_band =htmlspecialchars($this->segment(4));
+		$select =htmlspecialchars($this->segment(5));
+		$p =htmlspecialchars($this->segment(6)) ? $this->segment(6) :1;
+
 
 		if(!$select){
 			$select = '10';
@@ -227,7 +237,10 @@ class mobile extends base {
 			$fen1 = intval($cate_band);
 			$cate_band = 'list';
 		}
-		if(empty($fen1) && $fen1 >0){
+
+//		print_r($fen1);
+
+		if($fen1 == 0){
 			$brand=$this->db->GetList("select * from `@#_brand` where 1 order by `order` DESC");
 			$daohang = '所有分类';
 		}else{
@@ -263,12 +276,12 @@ class mobile extends base {
 			$select_w = 'order by `money` ASC';
 		}
 
-		if($fen1){
+		if($fen1 > 0){
 			$count=$this->db->GetList("select * from `@#_shoplist` where `q_uid` is null and `cateid`='$fen1' $select_w");
 		}else{
 			$count=$this->db->GetList("select * from `@#_shoplist` where `q_uid` is null $select_w");
 		}
-		if($fen1){
+		if($fen1 > 0){
 			$shoplist=$this->db->GetList("select * from `@#_shoplist` where `q_uid` is null and `cateid`='$fen1' $select_w limit $star,$end");
 		}else{
 			$shoplist=$this->db->GetList("select * from `@#_shoplist` where `q_uid` is null $select_w limit $star,$end");

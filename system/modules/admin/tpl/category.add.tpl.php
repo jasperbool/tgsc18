@@ -39,7 +39,10 @@ input.button{ display:inline-block}
 <div class="bk10"></div>
 <div class="table-list con-tab lr10" id="con-tab">
 <?php if($catetype=='def'){ ?>
-	<ul id="tab-i"><li name="con-tabk">基本选项</li><li name="con-tabk">SEO 设置</li></ul>
+	<ul id="tab-i">
+        <li name="con-tabk">基本选项</li>
+<!--        <li name="con-tabk">SEO 设置</li>-->
+    </ul>
 <div name='con-tabv' class="con-tabv">
  <form action="" id="form" method="post" enctype="multipart/form-data">
  <table width="100%" class="table_form">
@@ -49,11 +52,12 @@ input.button{ display:inline-block}
         <td>
 		 <select name="info[modelid]" class="wid150" onChange="">
          <option value="">≡ 请选择模型 ≡</option>
-         <?php foreach($models as $model){ ?>
-         <option value="<?php echo $model['modelid']; ?>"><?php echo $model['name']; ?></option>
-         <?php } ?>
-         <?php echo $topmodel; ?>
-         </select>
+<!--         --><?php //foreach($models as $model){ ?>
+<!--         <option value="--><?php //echo $model['modelid']; ?><!--">--><?php //echo $model['name']; ?><!--</option>-->
+<!--         --><?php //} ?>
+<!--         --><?php //echo $topmodel; ?>
+<!--         </select>-->
+            <option value="1">云购模型</option>
          <span><font color="#0c0">※ </font>请选择栏目模型</span>
       </tr>
       <tr>
@@ -61,7 +65,7 @@ input.button{ display:inline-block}
         <td>
 		<select name="info[parentid]" class="wid150">
         <option value="">≡ 作为一级栏目 ≡</option>
-        <?php echo $categoryshtml; ?>
+<!--        --><?php //echo $categoryshtml; ?>
         </select>
         </td>
       </tr>     

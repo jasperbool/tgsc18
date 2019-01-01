@@ -177,6 +177,18 @@ class pay {
 		}
 
 		$pay_type = $this->pay_type;
+
+		// 增加盈付宝支付
+        if($pay_type['pay_id'] == '31'){
+            $paydb = System::load_app_class('yingfubaoAliMobile','pay');
+            $paydb->pay($dingdancode, $money);
+            die();
+        }else if($pay_type['pay_id'] == '32'){
+            $paydb = System::load_app_class('yingfubaoWxMobile','pay');
+            $paydb->pay($dingdancode, $money);
+            die();
+        }
+
 		$paydb = System::load_app_class($pay_type['pay_class'],'pay');
 		$pay_type['pay_key'] = unserialize($pay_type['pay_key']);
 
@@ -267,6 +279,7 @@ class pay {
 			$pay_3 = pay_go_yongjin($uid,$dingdancode);
 			return $pay_1;
 		}
+
 		if(!is_array($this->pay_type)){
 			return 'not_pay';
 		}
@@ -275,6 +288,7 @@ class pay {
 		}else{
 			$scookie= '0';
 		}
+
 		if($pay_checkbox){
 			$money = $this->MoenyCount - $this->members['money'];
 			return $this->addmoney_record($money,$scookie);

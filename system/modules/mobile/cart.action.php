@@ -321,6 +321,7 @@ $shoparr = $this->db->GetList ( "SELECT * FROM `@#_shoplist` where `id` in($shop
 		  
 	
 		$pay=System::load_app_class('pay','pay');
+
  //修改支付每次都要使用福分问题 lq 2014-12-01
         //$pay->fufen = $fufen;
 		$pay->fufen = $checkpay=='fufen'?$fufen:0;
@@ -332,6 +333,7 @@ $shoparr = $this->db->GetList ( "SELECT * FROM `@#_shoplist` where `id` in($shop
 		  }
 
 		  $check = $pay->go_pay ( $pay_checkbox );
+
 		  if (! $check) {
 			  _messagemobile ( "订单添加失败,请<a href='" . WEB_PATH . "/mobile/cart/cartlist' style='color:#C40000'>返回购物车</a>查看" );
 		  }

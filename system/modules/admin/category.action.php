@@ -10,16 +10,16 @@ class category extends admin {
 		System::load_app_fun('global',G_ADMIN_DIR);
 		$this->db=$this->DB('category_model',ROUTE_M);
 		$this->ment=array(
-						array("lists","栏目管理",ROUTE_M.'/'.ROUTE_C."/lists"),
-						array("addcate","添加栏目",ROUTE_M.'/'.ROUTE_C."/addcate/def"),
-						array("addcate","添加单网页",ROUTE_M.'/'.ROUTE_C."/addcate/danweb"),
-						array("addcate","添加外部链接",ROUTE_M.'/'.ROUTE_C."/addcate/link"),
+//						array("lists","栏目管理",ROUTE_M.'/'.ROUTE_C."/lists"),
+						array("addcate","添加分类",ROUTE_M.'/'.ROUTE_C."/addcate/def"),
+//						array("addcate","添加单网页",ROUTE_M.'/'.ROUTE_C."/addcate/danweb"),
+//						array("addcate","添加外部链接",ROUTE_M.'/'.ROUTE_C."/addcate/link"),
 		);
 	}
 
 	//栏目列表
 	public function lists(){
-		$cate_type=$this->segment(4);
+		$cate_type=$this->segment(4) ? $this->segment(4) : 'goods';
 		if(!$cate_type){
 			$cate_where='1';
 		}
@@ -65,7 +65,7 @@ class category extends admin {
             <td align='center'>\$model</td>
             <td align='center'></td>
 			<td align='center'>
-                <a href='\$addsun\$cateid'>添加子栏目</a><span class='span_fenge lr5'>|</span>   
+                <!--<a href='\$addsun\$cateid'>添加子栏目</a><span class='span_fenge lr5'>|</span>   -->
 				<a href='\$editcate\$cateid'>修改</a><span class='span_fenge lr5'>|</span>
 				<a href=\"javascript:window.parent.Del('\$delcate\$cateid', '确认删除『 \$name 』栏目？');\">删除</a>
             </td>

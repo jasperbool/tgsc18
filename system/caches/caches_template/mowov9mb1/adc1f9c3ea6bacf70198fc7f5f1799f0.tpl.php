@@ -86,6 +86,7 @@
 		    	<?php $ln=1;if(is_array($paylist)) foreach($paylist AS $pay): ?>
 		    	<li class="gray9" urm="<?php echo $pay['pay_id']; ?>"><i class="z-bank-Round"><s></s></i> <?php echo $pay['pay_name']; ?></li>
 		    	 <?php  endforeach; $ln++; unset($ln); ?>
+				<!--<li class="gray9" urm="100" style="display: block;"><i class="z-bank-Round"><s></s></i>支付宝</li>-->
 
 		</ul>
 	    </article>

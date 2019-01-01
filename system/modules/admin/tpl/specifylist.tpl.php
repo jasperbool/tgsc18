@@ -37,7 +37,7 @@ tr{ text-align:center}
 <div class="header lr10">
 
 	<b style="height:42px; line-height:42px;">已指定中奖人列表</b>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:red">说明：中奖人只能从购买的人中指定，所以在指定前，请先用中奖人账号购买商品一次，然后再指定！以实现不同期次的中奖人不同的效果。
-                </font>(<b>别家的指定中奖人所有期次中奖人都一样，过于虚假！本店的则可以单独指定期次</b>)
+                </font>
 </div>
 <div class="header lr10">
     <a href="<?php echo WEB_PATH; ?>/admin/fund/specify" style="float:right; margin-right:10px; background:#222d32; color:#FFF;height:30px;border-radius:3px;padding-left:10px; padding-right:10px;line-height:30px;margin-top:5px;">添加指定中奖人</a>
